@@ -1,0 +1,12 @@
+.hero {
+  height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  padding: 2.4rem;
+  margin-top: 2.4rem;
+  color: #fff;
+
+  background-size: cover;
+  object-fit: contain;
+}

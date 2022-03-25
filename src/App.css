@@ -1,0 +1,26 @@
+/* --------------
+//  GENERAL
+----------------- */
+body {
+  font-size: 1.6rem;
+  font-family: var(--ff-open-sans);
+}
+
+/* --------------
+  //  lAYOUT
+  ----------------- */
+.container {
+  width: 90vw;
+  margin: 0 auto;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination__number {
+  font-size: 2rem;
+  padding: 0.5em 1em;
+}

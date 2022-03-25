@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
+
+/* --------------
+//  BASIC RESET
+----------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* --------------
+//  CUSTOM PROPS
+----------------- */
+:root {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+
+  /* Typography */
+  --ff-open-sans: "Open Sans", sans-serif;
+}

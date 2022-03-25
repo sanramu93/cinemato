@@ -1,0 +1,19 @@
+.movie-card {
+  margin: 4rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.movie-card__img {
+  width: 24rem;
+  border-radius: 10px;
+}
+
+.movie-card__title {
+  text-align: center;
+}
+
+.movie-card__star {
+  font-size: 2.4rem;
+}

@@ -1,0 +1,27 @@
+.header {
+  background-color: aquamarine;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.header__search {
+  display: flex;
+  align-items: center;
+}
+
+.header__search input {
+  font-size: 1.8rem;
+  font-family: var(--ff-open-sans);
+
+  width: 100%;
+}
+
+.header__icon {
+  font-size: 2.4rem;
+  margin: 0.4em;
+}
+
+.header__search__icon {
+  margin-left: 0;
+}
