@@ -1,0 +1,20 @@
+.side-menu {
+  width: 60vw;
+  height: 100vh;
+  position: absolute;
+  right: 0;
+  background-color: bisque;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.4s ease-out;
+}
+
+.side-menu--shown {
+  transform: translateX(0);
+  opacity: 0.95;
+}
+
+.side-menu__top {
+  display: flex;
+  justify-content: space-between;
+}

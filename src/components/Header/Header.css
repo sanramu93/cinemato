@@ -4,6 +4,10 @@
   justify-content: space-between;
   width: 100%;
 }
+.header__btn-menu {
+  background-color: unset;
+  border: unset;
+}
 
 .header__search {
   display: flex;

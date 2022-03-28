@@ -6,10 +6,12 @@ import {
   HiOutlineSearch,
 } from "react-icons/hi";
 
-export default function Header() {
+export default function Header({ toggleShowMenu }) {
   return (
     <header className="header">
-      <HiOutlineMenu className="header__icon" />
+      <button className="header__btn-menu" onClick={toggleShowMenu}>
+        <HiOutlineMenu className="header__icon" />
+      </button>
       <div className="header__search">
         <HiOutlineSearch className="header__icon header__search__icon" />
         <input type="text" />

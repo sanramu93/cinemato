@@ -4,8 +4,14 @@
 body {
   font-size: 1.6rem;
   font-family: var(--ff-open-sans);
+  position: relative;
 }
 
+a,
+a:visited {
+  color: black;
+  text-decoration: none;
+}
 /* --------------
   //  lAYOUT
   ----------------- */

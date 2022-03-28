@@ -2,17 +2,34 @@
 
 import { useState, useEffect } from "react";
 import "./App.css";
-import { getMovies, getMovieGenres } from "./apis/tmdbAPI";
+import { getMovies, getMovieGenres, getMoviesByGenre } from "./apis/tmdbAPI";
 import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
 import MovieCard from "./components/MovieCard/MovieCard";
+import SideMenu from "./components/SideMenu/SideMenu";
 import NavBtn from "./components/NavBtn/NavBtn";
 
 export default function App() {
   const [movies, setMovies] = useState([]);
+  const [showMenu, setShowMenu] = useState(false);
   const [category, setCategory] = useState("popular");
   const [allGenres, setAllGenres] = useState([]);
+  const [genreId, setGenreId] = useState(0);
   const [page, setPage] = useState(1);
+
+  const toggleShowMenu = () => {
+    setShowMenu((prevShow) => !prevShow);
+  };
+
+  const changeCategory = (e) => {
+    setCategory(e.target.name);
+    setGenreId(0);
+  };
+
+  const changeGenre = (e) => {
+    setGenreId(allGenres.find((genre) => genre.name === e.target.name).id);
+    setCategory("");
+  };
 
   const nextPage = () => {
     setPage((prevPage) => (prevPage < 500 ? prevPage + 1 : 1));
@@ -23,27 +40,33 @@ export default function App() {
   };
 
   useEffect(() => {
-    const getGenres = async () => {
+    const getData = async () => {
       const data = await getMovieGenres();
-      setAllGenres(data);
+      setAllGenres(data.genres);
     };
-    getGenres();
+    getData();
   }, []);
 
   useEffect(() => {
     const getData = async () => {
-      const data = await getMovies(category, page);
+      const data = await getMovies(category, genreId, page);
       setMovies(data.results);
 
       // scroll to top
       window.scrollTo(0, 0);
     };
     getData();
-  }, [page]);
+  }, [page, category, genreId]);
 
   return (
     <>
-      <Header />
+      <SideMenu
+        changeCategory={changeCategory}
+        allGenres={allGenres}
+        changeGenre={changeGenre}
+        showMenu={showMenu}
+      />
+      <Header toggleShowMenu={toggleShowMenu} />
       <div className="container">
         <main className="main">
           <Hero movie={movies[0] || ""} />
