@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import "./App.css";
-import { getMovies } from "./apis/tmdbAPI";
+import { getMovies, getMovieGenres } from "./apis/tmdbAPI";
 import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
 import MovieCard from "./components/MovieCard/MovieCard";
@@ -11,6 +11,7 @@ import NavBtn from "./components/NavBtn/NavBtn";
 export default function App() {
   const [movies, setMovies] = useState([]);
   const [category, setCategory] = useState("popular");
+  const [allGenres, setAllGenres] = useState([]);
   const [page, setPage] = useState(1);
 
   const nextPage = () => {
@@ -22,6 +23,14 @@ export default function App() {
   };
 
   useEffect(() => {
+    const getGenres = async () => {
+      const data = await getMovieGenres();
+      setAllGenres(data);
+    };
+    getGenres();
+  }, []);
+
+  useEffect(() => {
     const getData = async () => {
       const data = await getMovies(category, page);
       setMovies(data.results);
@@ -31,6 +40,7 @@ export default function App() {
     };
     getData();
   }, [page]);
+
   return (
     <>
       <Header />
