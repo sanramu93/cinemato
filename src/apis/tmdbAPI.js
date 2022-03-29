@@ -19,14 +19,6 @@ export const getMovies = async (
   return data;
 };
 
-// export const getMoviesByGenre = async (genreId = "", page = 1) => {
-//   const res = await fetch(
-//     `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=27&language=en-US&page=${page}`
-//   );
-//   const data = res.json();
-//   return data;
-// };
-
 export const getMoviePosterUrl = (posterPath) => {
   return `https://image.tmdb.org/t/p/w500${posterPath}`;
 };
@@ -38,3 +30,5 @@ export const getMovieGenres = async () => {
   const data = res.json();
   return data;
 };
+
+export const getMovieBySearchTerm = async (searchTerm) => {};

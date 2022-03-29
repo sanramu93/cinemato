@@ -11,11 +11,21 @@ import NavBtn from "./components/NavBtn/NavBtn";
 
 export default function App() {
   const [movies, setMovies] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [showMenu, setShowMenu] = useState(false);
   const [category, setCategory] = useState("popular");
   const [allGenres, setAllGenres] = useState([]);
   const [genreId, setGenreId] = useState(0);
   const [page, setPage] = useState(1);
+
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    console.log(searchTerm);
+  };
 
   const toggleShowMenu = () => {
     setShowMenu((prevShow) => !prevShow);
@@ -66,7 +76,12 @@ export default function App() {
         changeGenre={changeGenre}
         showMenu={showMenu}
       />
-      <Header toggleShowMenu={toggleShowMenu} />
+      <Header
+        toggleShowMenu={toggleShowMenu}
+        handleSearch={handleSearch}
+        handleSearchSubmit={handleSearchSubmit}
+        searchTerm={searchTerm}
+      />
       <div className="container">
         <main className="main">
           <Hero movie={movies[0] || ""} />
