@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import "./App.css";
-import { getMovies, getMovieGenres, getMoviesByGenre } from "./apis/tmdbAPI";
+import { getMovies, getMovieGenres, getMoviePosterUrl } from "./apis/tmdbAPI";
 import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
 import MovieCard from "./components/MovieCard/MovieCard";
@@ -11,20 +11,17 @@ import NavBtn from "./components/NavBtn/NavBtn";
 
 export default function App() {
   const [movies, setMovies] = useState([]);
+  const [category, setCategory] = useState("popular");
   const [searchTerm, setSearchTerm] = useState("");
   const [showMenu, setShowMenu] = useState(false);
-  const [category, setCategory] = useState("popular");
   const [allGenres, setAllGenres] = useState([]);
   const [genreId, setGenreId] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
   const [page, setPage] = useState(1);
 
-  const handleSearch = (e) => {
-    setSearchTerm(e.target.value);
-  };
-
-  const handleSearchSubmit = (e) => {
+  const handleSearchSubmit = async (e) => {
     e.preventDefault();
-    console.log(searchTerm);
+    setSearchTerm(e.target[0].value);
   };
 
   const toggleShowMenu = () => {
@@ -42,7 +39,7 @@ export default function App() {
   };
 
   const nextPage = () => {
-    setPage((prevPage) => (prevPage < 500 ? prevPage + 1 : 1));
+    setPage((prevPage) => (prevPage < totalPages ? prevPage + 1 : prevPage));
   };
 
   const prevPage = () => {
@@ -59,14 +56,22 @@ export default function App() {
 
   useEffect(() => {
     const getData = async () => {
-      const data = await getMovies(category, genreId, page);
-      setMovies(data.results);
+      const data = await getMovies(category, genreId, searchTerm, page);
+      setTotalPages(data.total_pages);
+      setMovies(
+        data.results.map((result) => {
+          return {
+            ...result,
+            posterUrl: getMoviePosterUrl(result.poster_path),
+          };
+        })
+      );
 
       // scroll to top
       window.scrollTo(0, 0);
     };
     getData();
-  }, [page, category, genreId]);
+  }, [page, category, genreId, searchTerm]);
 
   return (
     <>
@@ -78,7 +83,6 @@ export default function App() {
       />
       <Header
         toggleShowMenu={toggleShowMenu}
-        handleSearch={handleSearch}
         handleSearchSubmit={handleSearchSubmit}
         searchTerm={searchTerm}
       />
