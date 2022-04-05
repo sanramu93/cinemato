@@ -24,6 +24,18 @@ export const getMovies = async (
   return data;
 };
 
+export const getMovieDetail = async (movieId) => {
+  const res = await fetch(
+    `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`
+  );
+  if (res.ok) {
+    const data = await res.json();
+    return data;
+  } else {
+    console.log("NOT FOUND");
+  }
+};
+
 export const getMoviePosterUrl = (posterPath) => {
   if (posterPath) return `https://image.tmdb.org/t/p/w500${posterPath}`;
 };

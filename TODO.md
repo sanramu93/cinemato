@@ -1,3 +1,3 @@
 # TODO
 
-- Search Filter
+- Finish Movie Detail Page
