@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./SideMenu.css";
 
 export default function SideMenu({ changeCategory, changeGenre, showMenu }) {
@@ -10,117 +11,117 @@ export default function SideMenu({ changeCategory, changeGenre, showMenu }) {
       <hr />
       <ul className="side-menu__categories">
         <li className="category__link">
-          <a href="#!" name="popular" onClick={changeCategory}>
+          <Link to="/" name="popular" onClick={changeCategory}>
             Popular
-          </a>
+          </Link>
         </li>
         <li className="category__link">
-          <a href="#!" name="top_rated" onClick={changeCategory}>
+          <Link to="/" name="top_rated" onClick={changeCategory}>
             Top Rated
-          </a>
+          </Link>
         </li>
         <li className="category__link">
-          <a href="#!" name="upcoming" onClick={changeCategory}>
+          <Link to="/" name="upcoming" onClick={changeCategory}>
             Upcoming
-          </a>
+          </Link>
         </li>
       </ul>
       <hr />
       <ul className="side-meun__genres">
         <li className="genre__link">
-          <a href="#!" name="Action" onClick={changeGenre}>
+          <Link to="/" name="Action" onClick={changeGenre}>
             Action
-          </a>
+          </Link>
         </li>
         <li className="genre__link">
-          <a href="#!" name="Adventure" onClick={changeGenre}>
+          <Link to="/" name="Adventure" onClick={changeGenre}>
             Adventure
-          </a>
+          </Link>
         </li>
         <li className="genre__link">
-          <a href="#!" name="Animation" onClick={changeGenre}>
+          <Link to="/" name="Animation" onClick={changeGenre}>
             Animation
-          </a>
+          </Link>
         </li>
         <li className="genre__link">
-          <a href="#!" name="Comedy" onClick={changeGenre}>
+          <Link to="/" name="Comedy" onClick={changeGenre}>
             Comedy
-          </a>
+          </Link>
         </li>
         <li className="genre__link">
-          <a href="#!" name="Crime" onClick={changeGenre}>
+          <Link to="/" name="Crime" onClick={changeGenre}>
             Crime
-          </a>
+          </Link>
         </li>
         <li className="genre__link">
-          <a href="#!" name="Documentary" onClick={changeGenre}>
+          <Link to="/" name="Documentary" onClick={changeGenre}>
             Documentary
-          </a>
+          </Link>
         </li>
         <li className="genre__link">
-          <a href="#!" name="Drama" onClick={changeGenre}>
+          <Link to="/" name="Drama" onClick={changeGenre}>
             Drama
-          </a>
+          </Link>
         </li>
         <li className="genre__link">
-          <a href="#!" name="Family" onClick={changeGenre}>
+          <Link to="/" name="Family" onClick={changeGenre}>
             Family
-          </a>
+          </Link>
         </li>
         <li className="genre__link">
-          <a href="#!" name="Fantasy" onClick={changeGenre}>
+          <Link to="/" name="Fantasy" onClick={changeGenre}>
             Fantasy
-          </a>
+          </Link>
         </li>
         <li className="genre__link">
-          <a href="#!" name="History" onClick={changeGenre}>
+          <Link to="/" name="History" onClick={changeGenre}>
             History
-          </a>
+          </Link>
         </li>
         <li className="genre__link">
-          <a href="#!" name="Horror" onClick={changeGenre}>
+          <Link to="/" name="Horror" onClick={changeGenre}>
             Horror
-          </a>
+          </Link>
         </li>
         <li className="genre__link">
-          <a href="#!" name="Music" onClick={changeGenre}>
+          <Link to="/" name="Music" onClick={changeGenre}>
             Music
-          </a>
+          </Link>
         </li>
         <li className="genre__link">
-          <a href="#!" name="Mystery" onClick={changeGenre}>
+          <Link to="/" name="Mystery" onClick={changeGenre}>
             Mystery
-          </a>
+          </Link>
         </li>
         <li className="genre__link">
-          <a href="#!" name="Romance" onClick={changeGenre}>
+          <Link to="/" name="Romance" onClick={changeGenre}>
             Romance
-          </a>
+          </Link>
         </li>
         <li className="genre__link">
-          <a href="#!" name="Science Fiction" onClick={changeGenre}>
+          <Link to="/" name="Science Fiction" onClick={changeGenre}>
             Science Fiction
-          </a>
+          </Link>
         </li>
         <li className="genre__link">
-          <a href="#!" name="TV Movie" onClick={changeGenre}>
+          <Link to="/" name="TV Movie" onClick={changeGenre}>
             TV Movie
-          </a>
+          </Link>
         </li>
         <li className="genre__link">
-          <a href="#!" name="Thriller" onClick={changeGenre}>
+          <Link to="/" name="Thriller" onClick={changeGenre}>
             Thriller
-          </a>
+          </Link>
         </li>
         <li className="genre__link">
-          <a href="#!" name="War" onClick={changeGenre}>
+          <Link to="/" name="War" onClick={changeGenre}>
             War
-          </a>
+          </Link>
         </li>
         <li className="genre__link">
-          <a href="#!" name="Western" onClick={changeGenre}>
+          <Link to="/" name="Western" onClick={changeGenre}>
             Western
-          </a>
+          </Link>
         </li>
       </ul>
     </div>

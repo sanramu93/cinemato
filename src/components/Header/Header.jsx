@@ -6,18 +6,25 @@ import {
   HiOutlineSearch,
 } from "react-icons/hi";
 
-export default function Header({ toggleShowMenu, handleSearchSubmit }) {
+export default function Header({
+  toggleShowMenu,
+  handleSearchSubmit,
+  showSearch,
+}) {
   return (
     <header className="header">
       <button className="header__btn-menu" onClick={toggleShowMenu}>
         <HiOutlineMenu className="header__icon" />
       </button>
-      <div className="header__search">
-        <HiOutlineSearch className="header__icon header__search__icon" />
-        <form onSubmit={handleSearchSubmit}>
-          <input type="text" />
-        </form>
-      </div>
+      {showSearch ? (
+        <div className="header__search">
+          <HiOutlineSearch className="header__icon header__search__icon" />
+          <form onSubmit={handleSearchSubmit}>
+            <input type="text" />
+          </form>
+        </div>
+      ) : null}
+
       <HiOutlineMoon className="header__icon" />
     </header>
   );
