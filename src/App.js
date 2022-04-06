@@ -22,6 +22,8 @@ export default function App() {
     setSearchTerm(e.target[0].value);
   };
 
+  const handleSelectMovie = async (e) => {};
+
   const toggleShowMenu = () => {
     setShowMenu((prevShow) => !prevShow);
   };
