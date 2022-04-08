@@ -30,3 +30,10 @@ a:visited {
   font-size: 2rem;
   padding: 0.5em 1em;
 }
+
+/* --------------
+  //  UTILITIES
+  ----------------- */
+.scroll-lock {
+  position: fixed !important;
+}

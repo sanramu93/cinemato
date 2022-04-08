@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import Header from "../components/Header/Header";
-import Hero from "../components/Hero/Hero";
-import MovieCard from "../components/MovieCard/MovieCard";
-import SideMenu from "../components/SideMenu/SideMenu";
-import NavBtn from "../components/NavBtn/NavBtn";
+import Header from "../../components/Header/Header";
+import Hero from "../../components/Hero/Hero";
+import MovieCard from "../../components/MovieCard/MovieCard";
+import SideMenu from "../../components/SideMenu/SideMenu";
+import NavBtn from "../../components/NavBtn/NavBtn";
 
 export default function HomePage({
   changeCategory,
@@ -15,8 +15,8 @@ export default function HomePage({
   searchTerm,
   movies,
   page,
-  prevPage,
-  nextPage,
+  handlePrevPage,
+  handleNextPage,
 }) {
   return (
     <>
@@ -45,9 +45,9 @@ export default function HomePage({
             ))}
           </section>
           <div className="pagination">
-            <NavBtn icon="←" handleClick={prevPage} />
+            <NavBtn icon="←" handleClick={handlePrevPage} />
             <p className="pagination__number">{page}</p>
-            <NavBtn icon="→" handleClick={nextPage} />
+            <NavBtn icon="→" handleClick={handleNextPage} />
           </div>
         </main>
       </div>

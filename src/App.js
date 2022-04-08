@@ -1,10 +1,17 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useParams,
+} from "react-router-dom";
 
-import { getMovies, getMovieGenres, getMoviePosterUrl } from "./apis/tmdbAPI";
+import { getMovies, getMovieGenres, getImage } from "./apis/tmdbAPI";
 
-import HomePage from "./pages/HomePage";
-import MoviePage from "./pages/MoviePage";
+import HomePage from "./pages/HomePage/HomePage";
+import MoviePage from "./pages/MoviePage/MoviePage";
+import ActorsPage from "./pages/ActorsPage/ActorsPage";
+
 import "./App.css";
 
 export default function App() {
@@ -22,8 +29,6 @@ export default function App() {
     setSearchTerm(e.target[0].value);
   };
 
-  const handleSelectMovie = async (e) => {};
-
   const toggleShowMenu = () => {
     setShowMenu((prevShow) => !prevShow);
   };
@@ -38,12 +43,16 @@ export default function App() {
     setCategory("");
   };
 
-  const nextPage = () => {
+  const handleNextPage = () => {
     setPage((prevPage) => (prevPage < totalPages ? prevPage + 1 : prevPage));
   };
 
-  const prevPage = () => {
+  const handlePrevPage = () => {
     setPage((prevPage) => (prevPage > 1 ? prevPage - 1 : 1));
+  };
+
+  const dumbFunction = () => {
+    console.log("Click!");
   };
 
   useEffect(() => {
@@ -62,7 +71,7 @@ export default function App() {
         data.results.map((result) => {
           return {
             ...result,
-            posterUrl: getMoviePosterUrl(result.poster_path),
+            posterUrl: getImage(result.poster_path),
           };
         })
       );
@@ -72,6 +81,7 @@ export default function App() {
     };
     getData();
   }, [page, category, genreId, searchTerm]);
+
   return (
     <Router>
       <Routes>
@@ -88,15 +98,28 @@ export default function App() {
               searchTerm={searchTerm}
               movies={movies}
               page={page}
-              prevPage={prevPage}
-              nextpage={nextPage}
+              handlePrevPage={handlePrevPage}
+              handleNextPage={handleNextPage}
             />
           }
         />
         <Route
-          path="/movie/:id"
+          path="/movie/:movieId"
           element={
             <MoviePage
+              changeCategory={changeCategory}
+              allGenres={allGenres}
+              changeGenre={changeGenre}
+              showMenu={showMenu}
+              toggleShowMenu={toggleShowMenu}
+              handleSearchSubmit={handleSearchSubmit}
+            />
+          }
+        />
+        <Route
+          path="/actors/:actorId"
+          element={
+            <ActorsPage
               changeCategory={changeCategory}
               allGenres={allGenres}
               changeGenre={changeGenre}
