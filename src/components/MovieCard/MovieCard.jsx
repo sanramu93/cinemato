@@ -29,11 +29,11 @@ export default function MovieCard({ movie }) {
   return (
     <div className="movie-card">
       <img
-        src={movie.posterUrl || noImage}
+        src={movie.posterUrl || movie.backdropUrl || noImage}
         alt=""
         className="movie-card__img"
       />
-      <h2 className="movie-card__title">{movie.title}</h2>
+      <h3 className="movie-card__title">{movie.title}</h3>
       <div className="movie-card__rating">
         <div className="rating__stars">{renderRatingStars()}</div>
         <p className="rating-number">{`${movie.vote_average}/10`}</p>

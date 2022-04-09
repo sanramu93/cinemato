@@ -1,46 +1,43 @@
 import { useState, useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useParams,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { getMovies, getMovieGenres, getImage } from "./apis/tmdbAPI";
 
 import HomePage from "./pages/HomePage/HomePage";
 import MoviePage from "./pages/MoviePage/MoviePage";
-import ActorsPage from "./pages/ActorsPage/ActorsPage";
-
-import "./App.css";
+import ActorPage from "./pages/ActorPage/ActorPage";
 
 export default function App() {
   const [movies, setMovies] = useState([]);
-  const [category, setCategory] = useState("popular");
-  const [searchTerm, setSearchTerm] = useState("");
-  const [showMenu, setShowMenu] = useState(false);
-  const [allGenres, setAllGenres] = useState([]);
-  const [genreId, setGenreId] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [page, setPage] = useState(1);
+  const [allGenres, setAllGenres] = useState([]);
+  const [category, setCategory] = useState("popular");
+  const [genreId, setGenreId] = useState(0);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [showMenu, setShowMenu] = useState(false);
 
   const handleSearchSubmit = async (e) => {
     e.preventDefault();
     setSearchTerm(e.target[0].value);
-  };
-
-  const toggleShowMenu = () => {
-    setShowMenu((prevShow) => !prevShow);
+    setCategory("");
+    setGenreId(0);
   };
 
   const changeCategory = (e) => {
     setCategory(e.target.name);
     setGenreId(0);
+    setSearchTerm("");
   };
 
   const changeGenre = (e) => {
     setGenreId(allGenres.find((genre) => genre.name === e.target.name).id);
     setCategory("");
+    setSearchTerm("");
+  };
+
+  const toggleShowMenu = () => {
+    setShowMenu((prevShow) => !prevShow);
   };
 
   const handleNextPage = () => {
@@ -49,10 +46,6 @@ export default function App() {
 
   const handlePrevPage = () => {
     setPage((prevPage) => (prevPage > 1 ? prevPage - 1 : 1));
-  };
-
-  const dumbFunction = () => {
-    console.log("Click!");
   };
 
   useEffect(() => {
@@ -71,7 +64,8 @@ export default function App() {
         data.results.map((result) => {
           return {
             ...result,
-            posterUrl: getImage(result.poster_path),
+            posterUrl: getImage(result.poster_path, 500),
+            backdropUrl: getImage(result.backdrop_path, 1280),
           };
         })
       );
@@ -119,7 +113,7 @@ export default function App() {
         <Route
           path="/actors/:actorId"
           element={
-            <ActorsPage
+            <ActorPage
               changeCategory={changeCategory}
               allGenres={allGenres}
               changeGenre={changeGenre}

@@ -1,10 +1,9 @@
 .hero {
-  height: 75vh;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: end;
   padding: 2.4rem;
-  margin-top: 2.4rem;
   color: #fff;
 
   background-size: cover;

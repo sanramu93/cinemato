@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "./Home.css";
 import Header from "../../components/Header/Header";
 import Hero from "../../components/Hero/Hero";
 import MovieCard from "../../components/MovieCard/MovieCard";

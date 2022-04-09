@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
 
 /* --------------
 //  BASIC RESET
@@ -29,5 +29,62 @@ ul {
   scroll-behavior: smooth;
 
   /* Typography */
-  --ff-open-sans: "Open Sans", sans-serif;
+  --ff-lato: "Lato", sans-serif;
+  --fw-regular: 300;
+  --fw-medium: 500;
+  --fw-bold: 700;
+  --fs-h1: 4.8rem;
+  --fs-h2: 3.6rem;
+  --fs-h3: 2.4rem;
+  --fs-regular: 1.6rem;
+  --fs-small: 1.3rem;
+}
+
+/* --------------
+//  GENERAL
+----------------- */
+body {
+  font-size: var(--fs-regular);
+  font-family: var(--ff-lato);
+  position: relative;
+}
+
+a,
+a:visited {
+  color: black;
+  text-decoration: none;
+}
+
+/* --------------
+  //  TYPOGRAPHY
+  ----------------- */
+h1,
+h2,
+h3 {
+  font-weight: var(--fw-bold);
+}
+
+h1 {
+  font-size: var(--fs-h1);
+}
+h2 {
+  font-size: var(--fs-h2);
+  padding: 0.5em 0;
+}
+h3 {
+  font-size: var(--fs-h3);
+  padding: 0.5em 0;
+}
+
+p {
+  font-size: var(--fs-regular);
+  font-weight: var(--fw-regular);
+  line-height: 1.5;
+}
+/* --------------
+  //  lAYOUT
+  ----------------- */
+.container {
+  width: 90vw;
+  margin: 0 auto;
 }

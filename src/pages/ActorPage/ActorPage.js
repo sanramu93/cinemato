@@ -5,15 +5,15 @@ import SideMenu from "../../components/SideMenu/SideMenu";
 import Header from "../../components/Header/Header";
 import MovieCard from "../../components/MovieCard/MovieCard";
 
-export default function ActorsPage(
+export default function ActorPage({
   changeCategory,
   allGenres,
   changeGenre,
   showMenu,
   toggleShowMenu,
   handleSearchSubmit,
-  searchTerm
-) {
+  searchTerm,
+}) {
   const { actorId } = useParams();
   const [actor, setActor] = useState({});
   const [movies, setMovies] = useState([]);
@@ -22,12 +22,21 @@ export default function ActorsPage(
     const getData = async () => {
       const actorData = await getActorDetail(actorId);
       const actorMovies = await getActorMovies(actorId);
-      setActor({ ...actorData, imgUrl: getImage(actorData.profile_path) });
-      setMovies(actorMovies.results);
+      setActor({
+        ...actorData,
+        imgUrl: getImage(actorData.profile_path, 500),
+      });
+      setMovies(
+        actorMovies.results.map((movie) => ({
+          ...movie,
+          posterUrl: getImage(movie.poster_path, 500),
+          backdropUrl: getImage(movie.backdrop_path, 1280),
+        }))
+      );
     };
     getData();
   }, [actorId]);
-  console.log(movies);
+
   return (
     <>
       <SideMenu
@@ -48,10 +57,10 @@ export default function ActorsPage(
         <p className="actor__birthday">Born: {actor.birthday}</p>
         <p className="actor__bio">{actor.biography}</p>
         <div className="actor__tags">
-          <a href="" className="tag__imdb">
+          <a href="#!" className="tag__imdb">
             IMDB
           </a>
-          <a href="" className="tag__back">
+          <a href="#!" className="tag__back">
             BACK
           </a>
         </div>

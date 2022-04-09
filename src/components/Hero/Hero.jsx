@@ -3,15 +3,15 @@ import noImage from "../../assets/img/no-img.jpg";
 
 export default function Hero({ movie }) {
   const styles = {
-    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)) , url(${
-      movie.posterUrl || noImage
+    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)) , url(${
+      movie.backdropUrl || noImage
     })`,
   };
 
   return (
     <section className="hero" style={styles}>
-      <h3 className="hero_title">{movie.title}</h3>
-      <p className="hero__desc">{movie.overview}</p>
+      <h2 className="hero_title">{movie.title}</h2>
+      <p className="hero__description">{movie.overview}</p>
     </section>
   );
 }

@@ -7,13 +7,14 @@ export const getMovies = async (
   page = 1
 ) => {
   let res;
+
   if (genreId) {
     res = await fetch(
       `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${genreId}&language=en-US&page=${page}`
     );
   } else if (searchTerm) {
     res = await fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${searchTerm}&page=${page}&include_adult=false`
+      `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${searchTerm}&language=en-US&page=${page}&include_adult=false`
     );
   } else if (category) {
     res = await fetch(`
@@ -40,8 +41,8 @@ export const getMovieDetail = async (movieId) => {
   }
 };
 
-export const getImage = (path) => {
-  if (path) return `https://image.tmdb.org/t/p/w500${path}`;
+export const getImage = (path, width = 500) => {
+  if (path) return `https://image.tmdb.org/t/p/w${width}${path}`;
 };
 
 export const getMovieGenres = async () => {

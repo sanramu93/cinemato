@@ -1,5 +1,4 @@
 .movie-card {
-  margin: 4rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,6 +11,7 @@
 
 .movie-card__title {
   text-align: center;
+  padding-bottom: 0.2em;
 }
 
 .movie-card__rating {
@@ -27,4 +27,7 @@
 .rating__star {
   font-size: 2rem;
   margin: 0.1em;
+}
+.rating-number {
+  font-weight: var(--fw-bold);
 }

@@ -1,5 +1,7 @@
 .header {
   background-color: aquamarine;
+  position: fixed;
+  /* transform: translateY(-25px); */
   display: flex;
   justify-content: space-between;
   width: 100%;

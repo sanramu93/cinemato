@@ -1,0 +1,11 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination__number {
+  font-size: 2rem;
+  font-weight: var(--fw-bold);
+  padding: 0.5em 1em;
+}
