@@ -1,14 +1,19 @@
 .header {
-  background-color: aquamarine;
+  background-color: var(--clr-blue-main);
+  color: var(--clr-blue-light);
   position: fixed;
-  /* transform: translateY(-25px); */
+  padding: 0.3em;
   display: flex;
   justify-content: space-between;
   width: 100%;
+  box-shadow: var(--bs-small);
+  z-index: 1;
 }
 .header__btn-menu {
   background-color: unset;
+  color: var(--clr-white);
   border: unset;
+  cursor: pointer;
 }
 
 .header__search {
@@ -17,10 +22,11 @@
 }
 
 .header__search input {
-  font-size: 1.8rem;
-  font-family: var(--ff-open-sans);
-
+  color: var(--clr-gray-dark);
   width: 100%;
+  border: unset;
+  padding: 0.3em;
+  border-radius: var(--br-small);
 }
 
 .header__icon {

@@ -1,5 +1,12 @@
 .nav-btn {
-  font-size: 1.8rem;
+  background-color: var(--clr-blue-dark);
+  color: var(--clr-blue-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  padding: 0.5em;
+  border: none;
+  border-radius: 50%;
   font-family: var(--ff-open-sans);
-  padding: 0.2em 1em;
 }

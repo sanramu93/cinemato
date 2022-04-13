@@ -1,12 +1,21 @@
 .hero {
-  height: 80vh;
+  height: 75vh;
   display: flex;
   flex-direction: column;
   justify-content: end;
-  padding: 2.4rem;
-  color: #fff;
-
   background-size: cover;
   background-position: center;
   object-fit: contain;
+  padding: 2.4rem;
+  color: #fff;
+  border-radius: var(--br-regular);
+  box-shadow: var(--bs-regular);
+}
+
+.hero__title {
+  color: var(--clr-white);
+}
+
+.hero__description {
+  color: var(--clr-white);
 }

@@ -1,8 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { getMovies, getMovieGenres, getImage } from "./apis/tmdbAPI";
 
+import Overlay from "./components/Overlay/Overlay";
+import Header from "./components/Header/Header";
+import SideMenu from "./components/SideMenu/SideMenu";
 import HomePage from "./pages/HomePage/HomePage";
 import MoviePage from "./pages/MoviePage/MoviePage";
 import ActorPage from "./pages/ActorPage/ActorPage";
@@ -17,27 +20,43 @@ export default function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [showMenu, setShowMenu] = useState(false);
 
-  const handleSearchSubmit = async (e) => {
-    e.preventDefault();
-    setSearchTerm(e.target[0].value);
+  const inputRef = useRef(null);
+
+  const resetFilters = () => {
     setCategory("");
     setGenreId(0);
+    setPage(1);
+  };
+
+  const handleSearchSubmit = async (e) => {
+    e.preventDefault();
+    resetFilters();
+    setSearchTerm(e.target[0].value);
   };
 
   const changeCategory = (e) => {
+    resetFilters();
+    inputRef.current.value = "";
     setCategory(e.target.name);
-    setGenreId(0);
-    setSearchTerm("");
+    setShowMenu(false);
   };
 
   const changeGenre = (e) => {
+    resetFilters();
+    inputRef.current.value = "";
     setGenreId(allGenres.find((genre) => genre.name === e.target.name).id);
-    setCategory("");
-    setSearchTerm("");
+    setShowMenu(false);
+    document.body.classList.remove("scroll-disabled");
   };
 
   const toggleShowMenu = () => {
     setShowMenu((prevShow) => !prevShow);
+    document.body.classList.add("scroll-disabled");
+  };
+
+  const handleOverlayClick = () => {
+    setShowMenu(false);
+    document.body.classList.remove("scroll-disabled");
   };
 
   const handleNextPage = () => {
@@ -77,53 +96,69 @@ export default function App() {
   }, [page, category, genreId, searchTerm]);
 
   return (
-    <Router>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <HomePage
-              changeCategory={changeCategory}
-              allGenres={allGenres}
-              changeGenre={changeGenre}
-              showMenu={showMenu}
-              toggleShowMenu={toggleShowMenu}
-              handleSearchSubmit={handleSearchSubmit}
-              searchTerm={searchTerm}
-              movies={movies}
-              page={page}
-              handlePrevPage={handlePrevPage}
-              handleNextPage={handleNextPage}
-            />
-          }
+    <>
+      {showMenu ? <Overlay handleOverlayClick={handleOverlayClick} /> : null}
+      <Header
+        toggleShowMenu={toggleShowMenu}
+        handleSearchSubmit={handleSearchSubmit}
+        searchTerm={searchTerm}
+        showSearch={true}
+        inputRef={inputRef}
+      />
+      <Router>
+        <SideMenu
+          changeCategory={changeCategory}
+          allGenres={allGenres}
+          changeGenre={changeGenre}
+          showMenu={showMenu}
         />
-        <Route
-          path="/movie/:movieId"
-          element={
-            <MoviePage
-              changeCategory={changeCategory}
-              allGenres={allGenres}
-              changeGenre={changeGenre}
-              showMenu={showMenu}
-              toggleShowMenu={toggleShowMenu}
-              handleSearchSubmit={handleSearchSubmit}
-            />
-          }
-        />
-        <Route
-          path="/actors/:actorId"
-          element={
-            <ActorPage
-              changeCategory={changeCategory}
-              allGenres={allGenres}
-              changeGenre={changeGenre}
-              showMenu={showMenu}
-              toggleShowMenu={toggleShowMenu}
-              handleSearchSubmit={handleSearchSubmit}
-            />
-          }
-        />
-      </Routes>
-    </Router>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <HomePage
+                changeCategory={changeCategory}
+                allGenres={allGenres}
+                changeGenre={changeGenre}
+                showMenu={showMenu}
+                toggleShowMenu={toggleShowMenu}
+                handleSearchSubmit={handleSearchSubmit}
+                searchTerm={searchTerm}
+                movies={movies}
+                page={page}
+                handlePrevPage={handlePrevPage}
+                handleNextPage={handleNextPage}
+              />
+            }
+          />
+          <Route
+            path="/movie/:movieId"
+            element={
+              <MoviePage
+                changeCategory={changeCategory}
+                allGenres={allGenres}
+                changeGenre={changeGenre}
+                showMenu={showMenu}
+                toggleShowMenu={toggleShowMenu}
+                handleSearchSubmit={handleSearchSubmit}
+              />
+            }
+          />
+          <Route
+            path="/actors/:actorId"
+            element={
+              <ActorPage
+                changeCategory={changeCategory}
+                allGenres={allGenres}
+                changeGenre={changeGenre}
+                showMenu={showMenu}
+                toggleShowMenu={toggleShowMenu}
+                handleSearchSubmit={handleSearchSubmit}
+              />
+            }
+          />
+        </Routes>
+      </Router>
+    </>
   );
 }

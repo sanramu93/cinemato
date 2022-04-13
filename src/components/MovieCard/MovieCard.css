@@ -2,16 +2,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 4.8rem 0;
 }
 
 .movie-card__img {
   width: 24rem;
-  border-radius: 10px;
+  border-radius: var(--br-big);
+  box-shadow: var(--bs-small);
 }
 
 .movie-card__title {
   text-align: center;
   padding-bottom: 0.2em;
+  margin-bottom: 0;
 }
 
 .movie-card__rating {
@@ -24,6 +27,10 @@
   margin-right: 0.5em;
 }
 
+.rating__star,
+.rating-number {
+  color: var(--clr-blue-dark);
+}
 .rating__star {
   font-size: 2rem;
   margin: 0.1em;

@@ -1,11 +1,12 @@
 .pagination {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 }
 
 .pagination__number {
-  font-size: 2rem;
+  color: var(--clr-blue-dark);
+  font-size: var(--fs-h3);
   font-weight: var(--fw-bold);
   padding: 0.5em 1em;
 }

@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
 
+/* Color palette 
+https://coolors.co/palette/3d5a80-98c1d9-e0fbfc-ee6c4d-293241
+*/
+
 /* --------------
 //  BASIC RESET
 ----------------- */
@@ -36,8 +40,30 @@ ul {
   --fs-h1: 4.8rem;
   --fs-h2: 3.6rem;
   --fs-h3: 2.4rem;
+  --fs-input: 2rem;
   --fs-regular: 1.6rem;
   --fs-small: 1.3rem;
+
+  /* Colors */
+  --clr-blue-main: #66a3bb;
+  --clr-blue-dark: #253a47;
+  --clr-blue-light: #cbf6ff;
+  --clr-orange-accent: #ec9929;
+
+  --clr-white: #f8f9fa;
+
+  --clr-gray-dark: #343a40;
+  --clr-gray-light: #ced4da;
+
+  /* Border Radius */
+  --br-small: 4px;
+  --br-regular: 8px;
+  --br-big: 16px;
+
+  /* Box shadow */
+
+  --bs-small: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  --bs-regular: rgba(100, 100, 111, 0.5) 0px 7px 29px 0px;
 }
 
 /* --------------
@@ -46,6 +72,8 @@ ul {
 body {
   font-size: var(--fs-regular);
   font-family: var(--ff-lato);
+  background-color: var(--clr-white);
+  color: var(--clr-gray-dark);
   position: relative;
 }
 
@@ -69,11 +97,11 @@ h1 {
 }
 h2 {
   font-size: var(--fs-h2);
-  padding: 0.5em 0;
+  margin: 0.5em 0;
 }
 h3 {
   font-size: var(--fs-h3);
-  padding: 0.5em 0;
+  margin: 0.5em 0;
 }
 
 p {
@@ -81,10 +109,27 @@ p {
   font-weight: var(--fw-regular);
   line-height: 1.5;
 }
+
+input {
+  font-family: var(--ff-lato);
+  font-size: var(--fs-input);
+}
+
 /* --------------
   //  lAYOUT
   ----------------- */
 .container {
-  width: 90vw;
+  width: 85vw;
   margin: 0 auto;
+  padding-top: 8.6rem;
+  padding-bottom: 2.4rem;
+  position: relative;
+}
+
+/* --------------
+  //  HELPERS
+  ----------------- */
+
+.scroll-disabled {
+  overflow: hidden;
 }

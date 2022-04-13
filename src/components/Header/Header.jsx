@@ -10,6 +10,7 @@ export default function Header({
   toggleShowMenu,
   handleSearchSubmit,
   showSearch,
+  inputRef,
 }) {
   return (
     <header className="header">
@@ -20,7 +21,7 @@ export default function Header({
         <div className="header__search">
           <HiOutlineSearch className="header__icon header__search__icon" />
           <form onSubmit={handleSearchSubmit}>
-            <input type="text" />
+            <input ref={inputRef} type="text" />
           </form>
         </div>
       ) : null}
