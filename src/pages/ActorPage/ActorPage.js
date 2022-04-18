@@ -1,19 +1,16 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { getActorDetail, getImage, getActorMovies } from "../../apis/tmdbAPI";
-import SideMenu from "../../components/SideMenu/SideMenu";
-import Header from "../../components/Header/Header";
-import MovieCard from "../../components/MovieCard/MovieCard";
+import { getImdbPersonUrl } from "../../apis/imdb.API";
 
-export default function ActorPage({
-  changeCategory,
-  allGenres,
-  changeGenre,
-  showMenu,
-  toggleShowMenu,
-  handleSearchSubmit,
-  searchTerm,
-}) {
+import "./ActorPage.css";
+import MovieCard from "../../components/MovieCard/MovieCard";
+import LinkTag from "../../components/LinkTag/LinkTag";
+import { FaImdb } from "react-icons/fa";
+import { HiArrowSmLeft } from "react-icons/hi";
+
+export default function ActorPage() {
+  const navigate = useNavigate();
   const { actorId } = useParams();
   const [actor, setActor] = useState({});
   const [movies, setMovies] = useState([]);
@@ -37,43 +34,39 @@ export default function ActorPage({
     getData();
   }, [actorId]);
 
+  const { imgUrl, name, birthday, biography, imdb_id } = actor;
+
   return (
     <>
-      <SideMenu
-        changeCategory={changeCategory}
-        allGenres={allGenres}
-        changeGenre={changeGenre}
-        showMenu={showMenu}
-      />
-      <Header
-        toggleShowMenu={toggleShowMenu}
-        handleSearchSubmit={handleSearchSubmit}
-        searchTerm={searchTerm}
-        showSearch={false}
-      />
-      <section className="actor">
-        <img className="actor__img" src={actor.imgUrl} alt={actor.name} />
-        <h2 className="actor__title">{actor.name}</h2>
-        <p className="actor__birthday">Born: {actor.birthday}</p>
-        <p className="actor__bio">{actor.biography}</p>
-        <div className="actor__tags">
-          <a href="#!" className="tag__imdb">
-            IMDB
-          </a>
-          <a href="#!" className="tag__back">
-            BACK
-          </a>
-        </div>
-        <h2 className="actor__movies__title">Movies</h2>
-        <div className="actor__movies">
-          {movies.length > 0 &&
-            movies.map((movie) => (
-              <Link key={movie.id} to={`/movie/${movie.id}`}>
-                <MovieCard movie={movie} />
-              </Link>
-            ))}
-        </div>
-      </section>
+      <div className="container">
+        <section className="actor">
+          <img className=" actor__img" src={imgUrl} alt={name} />
+          <h3 className="actor__title">{name}</h3>
+          <p className="actor__birthday">Born: {birthday}</p>
+          <p className="actor__bio">{biography}</p>
+          <div className="actor__tags">
+            <LinkTag
+              name="IMDB"
+              icon={<FaImdb />}
+              url={getImdbPersonUrl(imdb_id)}
+            />
+            <LinkTag
+              name="Back"
+              icon={<HiArrowSmLeft />}
+              onClick={() => navigate("/")}
+            />
+          </div>
+          <h3 className="actor__movies__title">Movies</h3>
+          <div className="actor__movies">
+            {movies.length > 0 &&
+              movies.map((movie) => (
+                <Link key={movie.id} to={`/movie/${movie.id}`}>
+                  <MovieCard movie={movie} />
+                </Link>
+              ))}
+          </div>
+        </section>
+      </div>
     </>
   );
 }

@@ -17,6 +17,12 @@
   font-weight: var(--fw-medium);
 }
 
+.movie-detail__genres {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
 .movie-detail__section {
   margin-bottom: 3em;
 }
@@ -27,13 +33,11 @@
   gap: 0.5em;
 }
 
-.top-cast__profile {
-  width: 10rem;
-}
-
 .profile__img {
   border-radius: var(--br-big);
   object-fit: cover;
+  height: 14rem;
+  width: 9rem;
 }
 
 .profile__name {
@@ -48,15 +52,7 @@
 
 .movie-detail__tags {
   display: flex;
-  justify-content: space-between;
-}
-
-.movie-detail__tag {
-  border: solid 1px var(--clr-blue-main);
-  border-radius: var(--br-small);
-  padding: 0.3em 0.5em;
-}
-
-.movie-detail__tag {
-  color: var(--clr-blue-dark);
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1em;
 }

@@ -104,3 +104,15 @@ export const getActorMovies = async (actorId) => {
     console.log("NOT FOUND");
   }
 };
+
+export const getMovieTrailers = async (movieId) => {
+  const res = await fetch(
+    `http://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${API_KEY}`
+  );
+  if (res.ok) {
+    const data = await res.json();
+    return data;
+  } else {
+    console.log("NOT FOUND");
+  }
+};

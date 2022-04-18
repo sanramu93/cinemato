@@ -1,0 +1,22 @@
+.actor__img {
+  border-radius: var(--br-big);
+  box-shadow: var(--bs-regular);
+  margin-bottom: 3em;
+}
+
+.actor__birthday {
+  font-size: var(--fs-regular);
+  font-weight: var(--fw-medium);
+  margin-bottom: 1em;
+}
+
+.actor__bio {
+  margin-bottom: 2em;
+}
+
+.actor__tags {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  margin-bottom: 3em;
+}

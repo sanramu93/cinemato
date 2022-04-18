@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import "./Header.css";
 import {
   HiOutlineMenu,
@@ -12,6 +14,8 @@ export default function Header({
   showSearch,
   inputRef,
 }) {
+  const navigate = useNavigate();
+
   return (
     <header className="header">
       <button className="header__btn-menu" onClick={toggleShowMenu}>
@@ -20,7 +24,12 @@ export default function Header({
       {showSearch ? (
         <div className="header__search">
           <HiOutlineSearch className="header__icon header__search__icon" />
-          <form onSubmit={handleSearchSubmit}>
+          <form
+            onSubmit={(e) => {
+              handleSearchSubmit(e);
+              navigate("/");
+            }}
+          >
             <input ref={inputRef} type="text" />
           </form>
         </div>

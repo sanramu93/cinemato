@@ -36,7 +36,9 @@ export default function MovieCard({ movie }) {
       <h3 className="movie-card__title">{movie.title}</h3>
       <div className="movie-card__rating">
         <div className="rating__stars">{renderRatingStars()}</div>
-        <p className="rating-number">{`${movie.vote_average}/10`}</p>
+        <p className="rating-number">{`${movie.vote_average?.toFixed(
+          1
+        )}/10`}</p>
       </div>
     </div>
   );

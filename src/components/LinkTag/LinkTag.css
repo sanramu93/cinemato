@@ -1,0 +1,18 @@
+.link-tag {
+  border: solid 1px var(--clr-blue-main);
+  border-radius: var(--br-small);
+  padding: 0.3em 0.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fs-regular);
+  color: var(--clr-blue-dark);
+}
+
+.link-tag__icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--clr-blue-main);
+  margin-right: 0.5em;
+}

@@ -25,6 +25,7 @@ export default function App() {
   const resetFilters = () => {
     setCategory("");
     setGenreId(0);
+    setSearchTerm("");
     setPage(1);
   };
 
@@ -34,18 +35,18 @@ export default function App() {
     setSearchTerm(e.target[0].value);
   };
 
-  const changeCategory = (category) => {
+  const changeCategory = (categoryName) => {
     resetFilters();
     inputRef.current.value = "";
-    setCategory(category);
+    setCategory(categoryName);
     setShowMenu(false);
     document.body.classList.remove("scroll-disabled");
   };
 
-  const changeGenre = (genre) => {
+  const changeGenre = (genreName) => {
     resetFilters();
     inputRef.current.value = "";
-    setGenreId(allGenres.find((gen) => gen.name === genre).id);
+    setGenreId(allGenres.find((gen) => gen.name === genreName).id);
     setShowMenu(false);
     document.body.classList.remove("scroll-disabled");
   };
@@ -98,15 +99,15 @@ export default function App() {
 
   return (
     <>
-      {showMenu ? <Overlay handleOverlayClick={handleOverlayClick} /> : null}
-      <Header
-        toggleShowMenu={toggleShowMenu}
-        handleSearchSubmit={handleSearchSubmit}
-        searchTerm={searchTerm}
-        showSearch={true}
-        inputRef={inputRef}
-      />
       <Router>
+        {showMenu ? <Overlay handleOverlayClick={handleOverlayClick} /> : null}
+        <Header
+          toggleShowMenu={toggleShowMenu}
+          handleSearchSubmit={handleSearchSubmit}
+          searchTerm={searchTerm}
+          showSearch={true}
+          inputRef={inputRef}
+        />
         <SideMenu
           changeCategory={changeCategory}
           allGenres={allGenres}

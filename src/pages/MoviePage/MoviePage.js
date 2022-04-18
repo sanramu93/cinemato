@@ -1,20 +1,29 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import {
   getMovieDetail,
   getImage,
   getMovieCredits,
   getMovieRecommendations,
+  getMovieTrailers,
 } from "../../apis/tmdbAPI";
-// import { getRatingStars } from "../utils/utils";
+import { getImdbUrl } from "../../apis/imdb.API";
+import { getMovieTrailer } from "../../apis/youtubeAPI";
 import "./MoviePage.css";
+import noImage from "../../assets/img/no-img.jpg";
 import MovieCard from "../../components/MovieCard/MovieCard";
+import FilterLink from "../../components/FilterLink/FilterLink";
+import { FaGlobe, FaImdb, FaVideo } from "react-icons/fa";
+import { HiArrowSmLeft } from "react-icons/hi";
+import LinkTag from "../../components/LinkTag/LinkTag";
 
-export default function MoviePage() {
+export default function MoviePage({ changeGenre }) {
+  let navigate = useNavigate();
   const { movieId } = useParams();
   const [movie, setMovie] = useState({});
   const [credits, setCredits] = useState([]);
   const [recommendations, setRecommendations] = useState([]);
+  const [trailer, setTrailer] = useState({});
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -22,6 +31,7 @@ export default function MoviePage() {
       const movieData = await getMovieDetail(movieId);
       const movieCredits = await getMovieCredits(movieId);
       const movieRecommendations = await getMovieRecommendations(movieId);
+      const movieTrailers = await getMovieTrailers(movieId);
       setMovie({
         ...movieData,
         posterUrl: getImage(movieData.poster_path),
@@ -32,6 +42,9 @@ export default function MoviePage() {
           ...movie,
           posterUrl: getImage(movie.poster_path),
         }))
+      );
+      setTrailer(
+        movieTrailers.results.find((trailer) => trailer.type === "Trailer")
       );
     };
     getData();
@@ -44,6 +57,8 @@ export default function MoviePage() {
     original_language,
     genres,
     overview,
+    homepage,
+    imdb_id,
   } = movie;
 
   return (
@@ -52,13 +67,16 @@ export default function MoviePage() {
         <MovieCard movie={movie} />
         <p className="movie-detail__tagline">{tagline}</p>
         <p className="movie-detail__runtime">{`${runtime} min / ${release_date} / ${original_language}`}</p>
-        <div className="movie-detail__genres">
+        <ul className="movie-detail__genres">
           {genres?.map((gen) => (
-            <div key={gen.id} className="genre">
-              {gen.name}
-            </div>
+            <li key={gen.id}>
+              <FilterLink
+                name={gen.name}
+                changeGenre={() => changeGenre(gen.name)}
+              />
+            </li>
           ))}
-        </div>
+        </ul>
         <div className="movie-detail__section movie-detail__overview">
           <h3 className="overview__title">Overview</h3>
           <p className="overview__desc">{overview}</p>
@@ -71,7 +89,7 @@ export default function MoviePage() {
                 <Link to={`/actors/${profile.id}`}>
                   <img
                     className="profile__img"
-                    src={getImage(profile.profile_path)}
+                    src={getImage(profile.profile_path) || noImage}
                     alt=""
                   />
                 </Link>
@@ -82,18 +100,18 @@ export default function MoviePage() {
           </div>
         </div>
         <div className="movie-detail__section movie-detail__tags">
-          <a href="" className="movie-detail__tag">
-            Website
-          </a>
-          <a href="" className="movie-detail__tag">
-            IMDB
-          </a>
-          <a href="" className="movie-detail__tag">
-            Trailer
-          </a>
-          <a href="" className="movie-detail__tag">
-            Back
-          </a>
+          <LinkTag name="Website" icon={<FaGlobe />} url={homepage} />
+          <LinkTag name="IMDB" icon={<FaImdb />} url={getImdbUrl(imdb_id)} />
+          <LinkTag
+            name="Trailer"
+            icon={<FaVideo />}
+            url={getMovieTrailer(trailer?.key)}
+          />
+          <LinkTag
+            name="Back"
+            icon={<HiArrowSmLeft />}
+            onClick={() => navigate("/")}
+          />
         </div>
         <div className="movie-detail__section movie-detail__related">
           <h2 className="related__title">You might also like</h2>
