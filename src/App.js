@@ -34,17 +34,18 @@ export default function App() {
     setSearchTerm(e.target[0].value);
   };
 
-  const changeCategory = (e) => {
+  const changeCategory = (category) => {
     resetFilters();
     inputRef.current.value = "";
-    setCategory(e.target.name);
+    setCategory(category);
     setShowMenu(false);
+    document.body.classList.remove("scroll-disabled");
   };
 
-  const changeGenre = (e) => {
+  const changeGenre = (genre) => {
     resetFilters();
     inputRef.current.value = "";
-    setGenreId(allGenres.find((genre) => genre.name === e.target.name).id);
+    setGenreId(allGenres.find((gen) => gen.name === genre).id);
     setShowMenu(false);
     document.body.classList.remove("scroll-disabled");
   };

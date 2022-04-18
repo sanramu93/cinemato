@@ -11,3 +11,7 @@ export const getRatingStars = (voteAverage) => {
 
   return stars.flat();
 };
+
+export const formatFilterName = (name) => {
+  return name.split(" ").join("_").toLowerCase();
+};

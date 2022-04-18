@@ -1,6 +1,7 @@
 .side-menu {
   background-color: var(--clr-white);
   color: var(--clr-blue-dark);
+  box-shadow: var(--bs-regular);
   width: 70vw;
   height: 100vh;
   right: 0;
@@ -30,6 +31,10 @@
   padding: 0.6em;
 }
 
+.side-menu__filters {
+  border-bottom: 1px solid var(--clr-gray-light);
+}
+
 .side-menu__title,
 .side-menu__link {
   padding-left: 2.4rem;
@@ -38,7 +43,7 @@
 .side-menu__title {
   color: var(--clr-blue-dark);
   font-size: 1.8rem;
-  padding-top: 1em;
+  padding: 1em;
 }
 
 .side-menu__link {
@@ -48,12 +53,12 @@
   cursor: pointer;
 }
 
-.side-menu__link a {
+.filter-link {
   display: flex;
   align-items: center;
 }
 
-.link__logo {
+.filter-link__logo {
   color: var(--clr-blue-main);
   font-size: 2.6rem;
   margin-right: 0.8em;

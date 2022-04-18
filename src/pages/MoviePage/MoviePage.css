@@ -1,6 +1,62 @@
+.movie-detail__tagline {
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-medium);
+  text-align: center;
+  margin-bottom: 1em;
+}
+
 .movie-detail__genres {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
   padding: 1.6em 0;
+}
+
+.movie-detail__runtime {
+  text-align: center;
+  font-weight: var(--fw-medium);
+}
+
+.movie-detail__section {
+  margin-bottom: 3em;
+}
+
+.top-cast__profiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5em;
+}
+
+.top-cast__profile {
+  width: 10rem;
+}
+
+.profile__img {
+  border-radius: var(--br-big);
+  object-fit: cover;
+}
+
+.profile__name {
+  color: var(--clr-gray-dark);
+  font-weight: var(--fw-medium);
+}
+
+.profile__character {
+  font-size: var(--fs-regular);
+  color: var(--clr-blue-dark);
+}
+
+.movie-detail__tags {
+  display: flex;
+  justify-content: space-between;
+}
+
+.movie-detail__tag {
+  border: solid 1px var(--clr-blue-main);
+  border-radius: var(--br-small);
+  padding: 0.3em 0.5em;
+}
+
+.movie-detail__tag {
+  color: var(--clr-blue-dark);
 }

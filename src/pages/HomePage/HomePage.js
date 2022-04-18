@@ -15,7 +15,7 @@ export default function HomePage({
     <div className="container">
       <section className="home">
         <Link to={`/movie/${movies[0]?.id}`}>
-          <Hero movie={movies[0] || ""} />
+          {<Hero movie={movies[0] || ""} />}
         </Link>
         <section className="movie-cards">
           {movies.slice(1).map((movie) => (

@@ -59,39 +59,43 @@ export default function MoviePage() {
             </div>
           ))}
         </div>
-        <div className="movie-detail__overview">
+        <div className="movie-detail__section movie-detail__overview">
           <h3 className="overview__title">Overview</h3>
           <p className="overview__desc">{overview}</p>
         </div>
-        <div className="top-cast">
+        <div className="movie-detail__section movie-detail__top-cast">
           <h3 className="top-cast__title">Top Cast</h3>
-          {credits.cast?.map((profile) => (
-            <div key={profile.id} className="top-cast__profile">
-              <Link to={`/actors/${profile.id}`}>
-                <img
-                  className="profile__img"
-                  src={getImage(profile.profile_path)}
-                  alt=""
-                />
-              </Link>
-              <p className="profile__name">{profile.name}</p>
-              <p className="profile__character">{profile.character}</p>
-            </div>
-          ))}
+          <div className="top-cast__profiles">
+            {credits.cast?.slice(0, 6).map((profile) => (
+              <div key={profile.id} className="top-cast__profile">
+                <Link to={`/actors/${profile.id}`}>
+                  <img
+                    className="profile__img"
+                    src={getImage(profile.profile_path)}
+                    alt=""
+                  />
+                </Link>
+                <p className="profile__name">{profile.name}</p>
+                <p className="profile__character">{profile.character}</p>
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="movie-detail__tags">
-          <a href="" className="tag">
+        <div className="movie-detail__section movie-detail__tags">
+          <a href="" className="movie-detail__tag">
             Website
           </a>
-          <a href="" className="tag">
+          <a href="" className="movie-detail__tag">
             IMDB
           </a>
-          <a href="" className="tag">
+          <a href="" className="movie-detail__tag">
             Trailer
           </a>
-          <button>Back</button>
+          <a href="" className="movie-detail__tag">
+            Back
+          </a>
         </div>
-        <div className="movie-detail__related">
+        <div className="movie-detail__section movie-detail__related">
           <h2 className="related__title">You might also like</h2>
           {recommendations.map((movie) => (
             <Link key={movie.id} to={`/movie/${movie.id}`}>
