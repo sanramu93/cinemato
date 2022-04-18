@@ -8,6 +8,7 @@ import NavBtn from "../../components/NavBtn/NavBtn";
 
 export default function HomePage({
   movies,
+  totalPages,
   page,
   handlePrevPage,
   handleNextPage,
@@ -29,9 +30,17 @@ export default function HomePage({
             ))}
           </section>
           <div className="pagination">
-            <NavBtn icon={<HiChevronLeft />} handleClick={handlePrevPage} />
+            <NavBtn
+              disable={page <= 1 && true}
+              icon={<HiChevronLeft />}
+              handleClick={handlePrevPage}
+            />
             <p className="pagination__number">{page}</p>
-            <NavBtn icon={<HiChevronRight />} handleClick={handleNextPage} />
+            <NavBtn
+              disable={page === totalPages && true}
+              icon={<HiChevronRight />}
+              handleClick={handleNextPage}
+            />
           </div>
         </section>
       )}

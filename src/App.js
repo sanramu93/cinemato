@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { getMovies, getMovieGenres, getImage } from "./apis/tmdbAPI";
 
-import Overlay from "./components/Overlay/Overlay";
 import Header from "./components/Header/Header";
 import SideMenu from "./components/SideMenu/SideMenu";
 import HomePage from "./pages/HomePage/HomePage";
@@ -27,38 +26,47 @@ export default function App() {
     setGenreId(0);
     setSearchTerm("");
     setPage(1);
+    inputRef.current.value = "";
+    window.scrollTo(0, 0);
+  };
+
+  const disableScroll = (bool) => {
+    return bool
+      ? document.body.classList.remove("scroll-disabled")
+      : document.body.classList.add("scroll-disabled");
   };
 
   const handleSearchSubmit = async (e) => {
     e.preventDefault();
+    const term = e.target[0].value;
+    if (!term) return;
     resetFilters();
-    setSearchTerm(e.target[0].value);
+    setSearchTerm(term);
+    inputRef.current.value = term;
   };
 
   const changeCategory = (categoryName) => {
     resetFilters();
-    inputRef.current.value = "";
     setCategory(categoryName);
     setShowMenu(false);
-    document.body.classList.remove("scroll-disabled");
+    disableScroll(true);
   };
 
   const changeGenre = (genreName) => {
     resetFilters();
-    inputRef.current.value = "";
     setGenreId(allGenres.find((gen) => gen.name === genreName).id);
     setShowMenu(false);
-    document.body.classList.remove("scroll-disabled");
+    disableScroll(true);
   };
 
   const toggleShowMenu = () => {
     setShowMenu((prevShow) => !prevShow);
-    document.body.classList.add("scroll-disabled");
+    disableScroll(false);
   };
 
   const handleOverlayClick = () => {
     setShowMenu(false);
-    document.body.classList.remove("scroll-disabled");
+    disableScroll(false);
   };
 
   const handleNextPage = () => {
@@ -100,13 +108,14 @@ export default function App() {
   return (
     <>
       <Router>
-        {showMenu ? <Overlay handleOverlayClick={handleOverlayClick} /> : null}
+        {/* {showMenu ? <Overlay handleOverlayClick={handleOverlayClick} /> : null} */}
         <Header
           toggleShowMenu={toggleShowMenu}
+          showMenu={showMenu}
           handleSearchSubmit={handleSearchSubmit}
           searchTerm={searchTerm}
-          showSearch={true}
           inputRef={inputRef}
+          handleOverlayClick={handleOverlayClick}
         />
         <SideMenu
           changeCategory={changeCategory}
@@ -127,6 +136,7 @@ export default function App() {
                 handleSearchSubmit={handleSearchSubmit}
                 searchTerm={searchTerm}
                 movies={movies}
+                totalPages={totalPages}
                 page={page}
                 handlePrevPage={handlePrevPage}
                 handleNextPage={handleNextPage}

@@ -1,7 +1,7 @@
 import "./NavBtn.css";
-export default function NavBtn({ icon, handleClick }) {
+export default function NavBtn({ disable, icon, handleClick }) {
   return (
-    <button className="nav-btn" onClick={handleClick}>
+    <button disabled={disable} className="nav-btn" onClick={handleClick}>
       {icon}
     </button>
   );

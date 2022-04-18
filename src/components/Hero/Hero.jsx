@@ -8,10 +8,13 @@ export default function Hero({ movie }) {
     })`,
   };
 
+  const sliceText = (text, length) => {
+    return text.length > length ? `${text.slice(0, length)}...` : text;
+  };
   return (
     <section className="hero" style={styles}>
       <h2 className="hero__title">{movie.title}</h2>
-      <p className="hero__description">{movie.overview}</p>
+      <p className="hero__description">{sliceText(movie.overview, 400)}</p>
     </section>
   );
 }

@@ -10,3 +10,7 @@
   border-radius: 50%;
   font-family: var(--ff-open-sans);
 }
+
+.nav-btn:disabled {
+  opacity: 0.8;
+}
