@@ -7,7 +7,7 @@
   background-position: center;
   object-fit: contain;
   padding: 2.4rem;
-  color: #fff;
+  color: var(--clr-white);
   border-radius: var(--br-regular);
   box-shadow: var(--bs-regular);
   margin-bottom: 2em;

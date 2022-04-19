@@ -37,36 +37,34 @@ export default function ActorPage() {
   const { imgUrl, name, birthday, biography, imdb_id } = actor;
 
   return (
-    <>
-      <div className="container">
-        <section className="actor">
-          <img className=" actor__img" src={imgUrl} alt={name} />
-          <h3 className="actor__title">{name}</h3>
-          <p className="actor__birthday">Born: {birthday}</p>
-          <p className="actor__bio">{biography}</p>
-          <div className="actor__tags">
-            <LinkTag
-              name="IMDB"
-              icon={<FaImdb />}
-              url={getImdbPersonUrl(imdb_id)}
-            />
-            <LinkTag
-              name="Back"
-              icon={<HiArrowSmLeft />}
-              onClick={() => navigate("/")}
-            />
-          </div>
-          <h3 className="actor__movies__title">Movies</h3>
-          <div className="actor__movies">
-            {movies.length > 0 &&
-              movies.map((movie) => (
-                <Link key={movie.id} to={`/movie/${movie.id}`}>
-                  <MovieCard movie={movie} />
-                </Link>
-              ))}
-          </div>
-        </section>
-      </div>
-    </>
+    <div className="container">
+      <section className="page actor">
+        <img className=" actor__img" src={imgUrl} alt={name} />
+        <h3 className="actor__title">{name}</h3>
+        <p className="actor__birthday">Born: {birthday}</p>
+        <p className="actor__bio">{biography}</p>
+        <div className="actor__tags">
+          <LinkTag
+            name="IMDB"
+            icon={<FaImdb />}
+            url={getImdbPersonUrl(imdb_id)}
+          />
+          <LinkTag
+            name="Back"
+            icon={<HiArrowSmLeft />}
+            onClick={() => navigate("/")}
+          />
+        </div>
+        <h3 className="actor__movies__title">Movies</h3>
+        <div className="actor__movies">
+          {movies.length > 0 &&
+            movies.map((movie) => (
+              <Link key={movie.id} to={`/movie/${movie.id}`}>
+                <MovieCard movie={movie} />
+              </Link>
+            ))}
+        </div>
+      </section>
+    </div>
   );
 }

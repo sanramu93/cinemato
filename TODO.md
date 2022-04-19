@@ -1,3 +1,4 @@
 # TODO
 
-- Fix Filter Link re direction
+- Create a function for adding dark class
+- Add Dark Mode

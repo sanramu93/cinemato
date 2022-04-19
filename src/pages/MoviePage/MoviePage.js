@@ -63,7 +63,7 @@ export default function MoviePage({ changeGenre }) {
 
   return (
     <div className="container">
-      <section className="movie-detail">
+      <section className="page movie-detail">
         <MovieCard movie={movie} />
         <p className="movie-detail__tagline">{tagline}</p>
         <p className="movie-detail__runtime">{`${runtime} min / ${release_date} / ${original_language}`}</p>

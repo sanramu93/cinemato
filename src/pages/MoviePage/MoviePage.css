@@ -41,7 +41,6 @@
 }
 
 .profile__name {
-  color: var(--clr-gray-dark);
   font-weight: var(--fw-medium);
 }
 

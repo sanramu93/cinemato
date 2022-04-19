@@ -1,15 +1,14 @@
 import { useNavigate } from "react-router-dom";
-import {
-  HiOutlineMenu,
-  HiOutlineMoon,
-  HiOutlineSun,
-  HiOutlineSearch,
-} from "react-icons/hi";
+import { HiOutlineMenu, HiOutlineMoon, HiOutlineSearch } from "react-icons/hi";
+
+import { FaSun } from "react-icons/fa";
 
 import "./Header.css";
 import Overlay from "../Overlay/Overlay";
 
 export default function Header({
+  toggleDarkMode,
+  darkMode,
   toggleShowMenu,
   showMenu,
   handleSearchSubmit,
@@ -21,13 +20,15 @@ export default function Header({
   return (
     <>
       {showMenu && <Overlay handleOverlayClick={handleOverlayClick} />}
-      <header className="header">
+      <header className={`header ${darkMode && "dark"}`}>
         <button className="header__btn-menu" onClick={toggleShowMenu}>
           <HiOutlineMenu className="header__icon" />
         </button>
 
         <div className="header__search">
-          <HiOutlineSearch className="header__icon header__search__icon" />
+          <button className="header__btn-menu">
+            <HiOutlineSearch className="header__icon header__search__icon" />
+          </button>
           <form
             onSubmit={(e) => {
               handleSearchSubmit(e);
@@ -37,8 +38,13 @@ export default function Header({
             <input ref={inputRef} type="text" />
           </form>
         </div>
-
-        <HiOutlineMoon className="header__icon" />
+        <button className="header__btn-menu" onClick={toggleDarkMode}>
+          {darkMode ? (
+            <FaSun className="header__icon" />
+          ) : (
+            <HiOutlineMoon className="header__icon" />
+          )}
+        </button>
       </header>
     </>
   );

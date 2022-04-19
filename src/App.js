@@ -10,6 +10,7 @@ import MoviePage from "./pages/MoviePage/MoviePage";
 import ActorPage from "./pages/ActorPage/ActorPage";
 
 export default function App() {
+  const [darkMode, setDarkMode] = useState(false);
   const [movies, setMovies] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
   const [page, setPage] = useState(1);
@@ -20,6 +21,10 @@ export default function App() {
   const [showMenu, setShowMenu] = useState(false);
 
   const inputRef = useRef(null);
+
+  const toggleDarkMode = () => {
+    setDarkMode((prevDarkMode) => !prevDarkMode);
+  };
 
   const resetFilters = () => {
     setCategory("");
@@ -32,8 +37,8 @@ export default function App() {
 
   const disableScroll = (bool) => {
     return bool
-      ? document.body.classList.remove("scroll-disabled")
-      : document.body.classList.add("scroll-disabled");
+      ? document.body.classList.add("scroll-disabled")
+      : document.body.classList.remove("scroll-disabled");
   };
 
   const handleSearchSubmit = async (e) => {
@@ -49,24 +54,20 @@ export default function App() {
     resetFilters();
     setCategory(categoryName);
     setShowMenu(false);
-    disableScroll(true);
   };
 
   const changeGenre = (genreName) => {
     resetFilters();
     setGenreId(allGenres.find((gen) => gen.name === genreName).id);
     setShowMenu(false);
-    disableScroll(true);
   };
 
   const toggleShowMenu = () => {
     setShowMenu((prevShow) => !prevShow);
-    disableScroll(false);
   };
 
   const handleOverlayClick = () => {
     setShowMenu(false);
-    disableScroll(false);
   };
 
   const handleNextPage = () => {
@@ -76,6 +77,10 @@ export default function App() {
   const handlePrevPage = () => {
     setPage((prevPage) => (prevPage > 1 ? prevPage - 1 : 1));
   };
+
+  useEffect(() => {
+    showMenu ? disableScroll(true) : disableScroll(false);
+  }, [showMenu]);
 
   useEffect(() => {
     const getData = async () => {
@@ -106,10 +111,11 @@ export default function App() {
   }, [page, category, genreId, searchTerm]);
 
   return (
-    <>
+    <div className={`body ${darkMode && "dark"}`}>
       <Router>
-        {/* {showMenu ? <Overlay handleOverlayClick={handleOverlayClick} /> : null} */}
         <Header
+          toggleDarkMode={toggleDarkMode}
+          darkMode={darkMode}
           toggleShowMenu={toggleShowMenu}
           showMenu={showMenu}
           handleSearchSubmit={handleSearchSubmit}
@@ -118,6 +124,7 @@ export default function App() {
           handleOverlayClick={handleOverlayClick}
         />
         <SideMenu
+          darkMode={darkMode}
           changeCategory={changeCategory}
           allGenres={allGenres}
           changeGenre={changeGenre}
@@ -128,6 +135,7 @@ export default function App() {
             path="/"
             element={
               <HomePage
+                darkMode={darkMode}
                 changeCategory={changeCategory}
                 allGenres={allGenres}
                 changeGenre={changeGenre}
@@ -171,6 +179,6 @@ export default function App() {
           />
         </Routes>
       </Router>
-    </>
+    </div>
   );
 }

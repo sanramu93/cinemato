@@ -1,0 +1,15 @@
+.filter-link {
+  display: flex;
+  align-items: center;
+}
+
+.link__text {
+  color: var(--clr-body-tertiary);
+  font-size: var(--fs-regular);
+}
+
+.filter-link__logo {
+  color: var(--clr-blue-main);
+  font-size: 2.6rem;
+  margin-right: 0.8em;
+}

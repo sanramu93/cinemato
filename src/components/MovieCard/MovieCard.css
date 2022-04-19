@@ -12,6 +12,7 @@
 }
 
 .movie-card__title {
+  color: var(--clr-body-tertiary);
   text-align: center;
   padding-bottom: 0.2em;
   margin-bottom: 0;
@@ -29,7 +30,7 @@
 
 .rating__star,
 .rating-number {
-  color: var(--clr-blue-dark);
+  color: var(--clr-body-tertiary);
 }
 .rating__star {
   font-size: 2rem;

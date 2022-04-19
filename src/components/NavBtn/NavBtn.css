@@ -1,16 +1,16 @@
 .nav-btn {
-  background-color: var(--clr-blue-dark);
-  color: var(--clr-blue-light);
+  background-color: var(--clr-body-primary);
+  color: var(--clr-body-tertiary);
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 3rem;
   padding: 0.5em;
-  border: none;
+  border: solid 1px var(--clr-body-tertiary);
   border-radius: 50%;
   font-family: var(--ff-open-sans);
 }
 
 .nav-btn:disabled {
-  opacity: 0.8;
+  opacity: 0.5;
 }

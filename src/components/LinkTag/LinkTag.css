@@ -1,12 +1,13 @@
 .link-tag {
   border: solid 1px var(--clr-blue-main);
   border-radius: var(--br-small);
-  padding: 0.3em 0.5em;
+  padding: 0.3em 0.7em;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: var(--fs-regular);
-  color: var(--clr-blue-dark);
+  margin-bottom: 1em;
+  cursor: pointer;
 }
 
 .link-tag__icon {
@@ -15,4 +16,8 @@
   align-items: center;
   color: var(--clr-blue-main);
   margin-right: 0.5em;
+}
+
+.link-tag__text {
+  color: var(--clr-body-tertiary);
 }

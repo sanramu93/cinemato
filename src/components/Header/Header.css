@@ -1,6 +1,8 @@
 .header {
-  background-color: var(--clr-blue-main);
-  color: var(--clr-blue-light);
+  --clr-header-primary: var(--clr-blue-main);
+  --clr-header-secondary: var(--clr-blue-dark);
+
+  background-color: var(--clr-header-primary);
   position: fixed;
   padding: 0.3em;
   display: flex;
@@ -8,10 +10,17 @@
   width: 100%;
   box-shadow: var(--bs-small);
   z-index: 1;
+  transition: all 0.2s ease-out;
 }
+
+.header.dark {
+  --clr-header-primary: var(--clr-blue-dark-tint-01);
+  --clr-header-secondary: var(--clr-blue-light);
+}
+
 .header__btn-menu {
   background-color: unset;
-  color: var(--clr-white);
+  color: var(--clr-header-secondary);
   border: unset;
   cursor: pointer;
 }
@@ -22,7 +31,6 @@
 }
 
 .header__search input {
-  color: var(--clr-gray-dark);
   width: 100%;
   border: unset;
   padding: 0.3em;
