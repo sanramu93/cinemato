@@ -3,7 +3,7 @@ import noImage from "../../assets/img/no-img.jpg";
 
 export default function Hero({ movie }) {
   const styles = {
-    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)) , url(${
+    backgroundImage: `linear-gradient(rgba(0, 0, 0,0.7), rgba(0, 0, 0,0.7)) , url(${
       movie.backdropUrl || noImage
     })`,
   };

@@ -19,6 +19,7 @@ export default function App() {
   const [genreId, setGenreId] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
   const [showMenu, setShowMenu] = useState(false);
+  const [showMenuOverlay, setShowMenuOverlay] = useState(false);
 
   const inputRef = useRef(null);
 
@@ -64,6 +65,7 @@ export default function App() {
 
   const toggleShowMenu = () => {
     setShowMenu((prevShow) => !prevShow);
+    setShowMenuOverlay((prevShow) => !prevShow);
   };
 
   const handleOverlayClick = () => {
@@ -110,6 +112,22 @@ export default function App() {
     getData();
   }, [page, category, genreId, searchTerm]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 800) {
+        setShowMenu(true);
+        setShowMenuOverlay(false);
+        disableScroll(false);
+      } else {
+        setShowMenu(false);
+      }
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div className={`body ${darkMode && "dark"}`}>
       <Router>
@@ -118,6 +136,7 @@ export default function App() {
           darkMode={darkMode}
           toggleShowMenu={toggleShowMenu}
           showMenu={showMenu}
+          showMenuOverlay={showMenuOverlay}
           handleSearchSubmit={handleSearchSubmit}
           searchTerm={searchTerm}
           inputRef={inputRef}

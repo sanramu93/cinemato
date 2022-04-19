@@ -10,7 +10,7 @@ export default function SideMenu({
 }) {
   return (
     <div
-      className={`side-menu ${showMenu ? "side-menu--shown" : ""} ${
+      className={`side-menu ${showMenu && "side-menu--shown"} ${
         darkMode ? "dark" : ""
       }`}
     >

@@ -7,7 +7,7 @@
   background-color: var(--clr-menu-primary);
   color: var(--clr-menu-secondary);
   box-shadow: var(--bs-regular);
-  width: 70vw;
+  width: 60vw;
   height: 100vh;
   right: 0;
   opacity: 0;
@@ -26,7 +26,7 @@
 }
 
 .side-menu.dark {
-  --clr-menu-primary: var(--clr-blue-dark);
+  --clr-menu-primary: var(--clr-blue-dark-shade-02);
   --clr-menu-secondary: var(--clr-blue-light);
   --clr-logo-primary: var(--clr-blue-main);
   --clr-logo-secondary: var(--clr-blue-dark);
@@ -57,4 +57,22 @@
 .side-menu__link {
   margin-bottom: 1em;
   width: 100%;
+}
+
+@media (min-width: 600px) {
+  .side-menu {
+    width: 40vw;
+    grid-column: 1;
+    grid-row: 1;
+  }
+}
+
+@media (min-width: 800px) {
+  .side-menu {
+    left: 0;
+    position: relative;
+    grid-column: 1;
+    grid-row: 1 / 3;
+    width: 30vw;
+  }
 }

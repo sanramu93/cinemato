@@ -18,9 +18,18 @@
   --clr-header-secondary: var(--clr-blue-light);
 }
 
+@media (min-width: 800px) {
+  .header {
+    position: relative;
+    grid-column: 2;
+    grid-row: 1;
+  }
+}
+
 .header__btn-menu {
   background-color: unset;
   color: var(--clr-header-secondary);
+  padding: 0 0.5em;
   border: unset;
   cursor: pointer;
 }
