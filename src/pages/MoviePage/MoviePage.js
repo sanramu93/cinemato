@@ -9,6 +9,7 @@ import {
 } from "../../apis/tmdbAPI";
 import { getImdbUrl } from "../../apis/imdb.API";
 import { getMovieTrailer } from "../../apis/youtubeAPI";
+import "../pages.css";
 import "./MoviePage.css";
 import noImage from "../../assets/img/no-img.jpg";
 import MovieCard from "../../components/MovieCard/MovieCard";
@@ -84,7 +85,7 @@ export default function MoviePage({ changeGenre }) {
         <div className="movie-detail__section movie-detail__top-cast">
           <h3 className="top-cast__title">Top Cast</h3>
           <div className="top-cast__profiles">
-            {credits.cast?.slice(0, 6).map((profile) => (
+            {credits.cast?.slice(0, 8).map((profile) => (
               <div key={profile.id} className="top-cast__profile">
                 <Link to={`/actors/${profile.id}`}>
                   <img
@@ -115,11 +116,13 @@ export default function MoviePage({ changeGenre }) {
         </div>
         <div className="movie-detail__section movie-detail__related">
           <h2 className="related__title">You might also like</h2>
-          {recommendations.map((movie) => (
-            <Link key={movie.id} to={`/movie/${movie.id}`}>
-              <MovieCard movie={movie} />
-            </Link>
-          ))}
+          <div className="movie-cards">
+            {recommendations.map((movie) => (
+              <Link key={movie.id} to={`/movie/${movie.id}`}>
+                <MovieCard movie={movie} />
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
     </div>

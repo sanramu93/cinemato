@@ -29,15 +29,39 @@
 
 .top-cast__profiles {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 0.5em;
+}
+
+@media (min-width: 800px) {
+  .top-cast__profiles {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1000px) {
+  .top-cast__profiles {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .top-cast__profiles {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}
+
+.top-cast__profile {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
 }
 
 .profile__img {
   border-radius: var(--br-big);
   object-fit: cover;
+  width: 10rem;
   height: 14rem;
-  width: 9rem;
 }
 
 .profile__name {

@@ -11,6 +11,7 @@ export default function Header({
   darkMode,
   toggleShowMenu,
   showMenu,
+  showMenuToggle,
   showMenuOverlay,
   handleSearchSubmit,
   inputRef,
@@ -23,10 +24,12 @@ export default function Header({
       {showMenu && showMenuOverlay ? (
         <Overlay handleOverlayClick={handleOverlayClick} />
       ) : null}
-      <header className={`header ${darkMode && "dark"}`}>
-        <button className="header__btn-menu" onClick={toggleShowMenu}>
-          <HiOutlineMenu className="header__icon" />
-        </button>
+      <header className={`header ${darkMode ? "dark" : ""}`}>
+        {showMenuToggle && (
+          <button className="header__btn-menu" onClick={toggleShowMenu}>
+            <HiOutlineMenu className="header__icon" />
+          </button>
+        )}
 
         <div className="header__search">
           <button className="header__btn-menu">

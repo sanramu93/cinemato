@@ -4,6 +4,7 @@ import { getActorDetail, getImage, getActorMovies } from "../../apis/tmdbAPI";
 import { getImdbPersonUrl } from "../../apis/imdb.API";
 
 import "./ActorPage.css";
+import "../pages.css";
 import MovieCard from "../../components/MovieCard/MovieCard";
 import LinkTag from "../../components/LinkTag/LinkTag";
 import { FaImdb } from "react-icons/fa";
@@ -56,7 +57,7 @@ export default function ActorPage() {
           />
         </div>
         <h3 className="actor__movies__title">Movies</h3>
-        <div className="actor__movies">
+        <div className="movie-cards">
           {movies.length > 0 &&
             movies.map((movie) => (
               <Link key={movie.id} to={`/movie/${movie.id}`}>

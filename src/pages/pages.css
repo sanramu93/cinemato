@@ -1,0 +1,19 @@
+@media (min-width: 800px) {
+  .movie-cards {
+    display: grid;
+    column-gap: 2em;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1000px) {
+  .movie-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .movie-cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

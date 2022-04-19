@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
+import "../pages.css";
 import "./Home.css";
 import Hero from "../../components/Hero/Hero";
 import MovieCard from "../../components/MovieCard/MovieCard";

@@ -20,3 +20,6 @@
   gap: 1em;
   margin-bottom: 3em;
 }
+
+@media (min-width: 1000px) {
+} ;

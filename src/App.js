@@ -19,13 +19,11 @@ export default function App() {
   const [genreId, setGenreId] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
   const [showMenu, setShowMenu] = useState(false);
+  const [showMenuToggle, setShowMenuToggle] = useState(true);
   const [showMenuOverlay, setShowMenuOverlay] = useState(false);
 
   const inputRef = useRef(null);
-
-  const toggleDarkMode = () => {
-    setDarkMode((prevDarkMode) => !prevDarkMode);
-  };
+  const bodyRef = useRef(null);
 
   const resetFilters = () => {
     setCategory("");
@@ -34,6 +32,15 @@ export default function App() {
     setPage(1);
     inputRef.current.value = "";
     window.scrollTo(0, 0);
+  };
+
+  const toggleDarkMode = () => {
+    setDarkMode((prevDarkMode) => !prevDarkMode);
+  };
+
+  const toggleShowMenu = () => {
+    setShowMenu((prevShow) => !prevShow);
+    setShowMenuOverlay(true);
   };
 
   const disableScroll = (bool) => {
@@ -54,22 +61,17 @@ export default function App() {
   const changeCategory = (categoryName) => {
     resetFilters();
     setCategory(categoryName);
-    setShowMenu(false);
+    if (window.innerWidth < 800) setShowMenu(false);
   };
 
   const changeGenre = (genreName) => {
     resetFilters();
     setGenreId(allGenres.find((gen) => gen.name === genreName).id);
-    setShowMenu(false);
-  };
-
-  const toggleShowMenu = () => {
-    setShowMenu((prevShow) => !prevShow);
-    setShowMenuOverlay((prevShow) => !prevShow);
+    if (window.innerWidth < 800) setShowMenu(false);
   };
 
   const handleOverlayClick = () => {
-    setShowMenu(false);
+    if (window.innerWidth < 800) setShowMenu(false);
   };
 
   const handleNextPage = () => {
@@ -117,9 +119,11 @@ export default function App() {
       if (window.innerWidth > 800) {
         setShowMenu(true);
         setShowMenuOverlay(false);
+        setShowMenuToggle(false);
         disableScroll(false);
       } else {
         setShowMenu(false);
+        setShowMenuToggle(true);
       }
     };
     handleResize();
@@ -129,13 +133,14 @@ export default function App() {
   }, []);
 
   return (
-    <div className={`body ${darkMode && "dark"}`}>
+    <div ref={bodyRef} className={`body ${darkMode ? "dark" : ""}`}>
       <Router>
         <Header
           toggleDarkMode={toggleDarkMode}
           darkMode={darkMode}
           toggleShowMenu={toggleShowMenu}
           showMenu={showMenu}
+          showMenuToggle={showMenuToggle}
           showMenuOverlay={showMenuOverlay}
           handleSearchSubmit={handleSearchSubmit}
           searchTerm={searchTerm}

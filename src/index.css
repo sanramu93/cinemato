@@ -45,15 +45,20 @@ ul {
   --fs-small: 1.3rem;
 
   /* Colors */
+  --clr-blue-main-tint-01: hsl(197, 38%, 90%);
   --clr-blue-main: hsl(197, 38%, 57%);
-  --clr-blue-dark-shade-02: hsl(203, 31%, 15%);
+
   --clr-blue-dark-tint-01: hsl(203, 31%, 35%);
   --clr-blue-dark: hsl(203, 31%, 21%);
+  --clr-blue-dark-shade-02: hsl(203, 31%, 15%);
+
   --clr-blue-light: hsl(190, 100%, 90%);
+
   --clr-orange-accent: hsl(34, 84%, 54%);
+
   --clr-white: hsl(210, 17%, 98%);
+
   --clr-gray-dark: hsl(210, 10%, 23%);
-  --clr-gray-light: hsl(210, 14%, 83%);
 
   /* Border Radius */
   --br-small: 4px;
@@ -147,7 +152,7 @@ input {
 @media (min-width: 800px) {
   .container {
     grid-column: 2;
-    width: 60vw;
+    width: 65vw;
     height: 100vh;
     overflow-y: scroll;
   }
