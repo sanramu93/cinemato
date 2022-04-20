@@ -55,7 +55,7 @@ ul {
   --clr-blue-light: hsl(190, 100%, 90%);
 
   --clr-orange-trans: rgbrgba(247, 210, 161, 0);
-  --clr-orange-trans-01: rgba(247, 210, 161, 0.4);
+  --clr-orange-trans-01: rgba(247, 210, 161, 0.1);
   --clr-orange: hsl(34, 84%, 54%);
 
   --clr-white: hsl(210, 17%, 98%);
@@ -75,6 +75,10 @@ ul {
 /* --------------
 //  GENERAL
 ----------------- */
+body {
+  font-family: var(--ff-lato);
+}
+
 .body {
   --clr-body-primary: var(--clr-white);
   --clr-body-secondary: var(--clr-gray-dark);
