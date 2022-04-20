@@ -30,10 +30,10 @@
 .top-cast__profiles {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0.5em;
+  gap: 1em;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 500px) {
   .top-cast__profiles {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -47,7 +47,7 @@
 
 @media (min-width: 1200px) {
   .top-cast__profiles {
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(6, 1fr);
   }
 }
 
@@ -64,13 +64,20 @@
   height: 14rem;
 }
 
+@media (min-width: 800px) {
+  .profile__img {
+    width: fit-content;
+    height: fit-content;
+  }
+}
+
 .profile__name {
   font-weight: var(--fw-medium);
+  padding: 0.5em;
 }
 
 .profile__character {
   font-size: var(--fs-regular);
-  color: var(--clr-blue-dark);
 }
 
 .movie-detail__tags {

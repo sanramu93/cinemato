@@ -138,23 +138,25 @@ input {
 }
 
 /* --------------
-  //  lAYOUT
+  //  LAYOUT
   ----------------- */
 .container {
-  /* border: solid 1px red; */
-  width: 85vw;
-  margin: 0 auto;
-  padding-top: 8.6rem;
-  padding-bottom: 2.4rem;
+  padding: 8.6rem 2rem 2.4rem 2rem;
   position: relative;
+  scroll-behavior: smooth;
 }
 
 @media (min-width: 800px) {
   .container {
     grid-column: 2;
-    width: 65vw;
     height: 100vh;
     overflow-y: scroll;
+  }
+}
+
+@media (min-width: 800px) {
+  .container {
+    padding: 8.6rem 7.2rem 2.4rem 7.2rem;
   }
 }
 

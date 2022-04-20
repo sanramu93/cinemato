@@ -5,9 +5,10 @@ import { getMovies, getMovieGenres, getImage } from "./apis/tmdbAPI";
 
 import Header from "./components/Header/Header";
 import SideMenu from "./components/SideMenu/SideMenu";
-import HomePage from "./pages/HomePage/HomePage";
-import MoviePage from "./pages/MoviePage/MoviePage";
-import ActorPage from "./pages/ActorPage/ActorPage";
+
+import HomePage from "./components/pages/HomePage/HomePage";
+import MoviePage from "./components/pages/MoviePage/MoviePage";
+import ActorPage from "./components/pages/ActorPage/ActorPage";
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -23,7 +24,12 @@ export default function App() {
   const [showMenuOverlay, setShowMenuOverlay] = useState(false);
 
   const inputRef = useRef(null);
-  const bodyRef = useRef(null);
+
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+    const containers = document.querySelectorAll(".container");
+    containers.forEach((cont) => cont.scrollTo(0, 0));
+  };
 
   const resetFilters = () => {
     setCategory("");
@@ -31,7 +37,7 @@ export default function App() {
     setSearchTerm("");
     setPage(1);
     inputRef.current.value = "";
-    window.scrollTo(0, 0);
+    scrollToTop();
   };
 
   const toggleDarkMode = () => {
@@ -107,11 +113,9 @@ export default function App() {
           };
         })
       );
-
-      // scroll to top
-      window.scrollTo(0, 0);
     };
     getData();
+    scrollToTop();
   }, [page, category, genreId, searchTerm]);
 
   useEffect(() => {
@@ -133,7 +137,7 @@ export default function App() {
   }, []);
 
   return (
-    <div ref={bodyRef} className={`body ${darkMode ? "dark" : ""}`}>
+    <div className={`body ${darkMode ? "dark" : ""}`}>
       <Router>
         <Header
           toggleDarkMode={toggleDarkMode}

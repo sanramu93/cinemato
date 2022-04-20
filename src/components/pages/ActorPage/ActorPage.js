@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { getActorDetail, getImage, getActorMovies } from "../../apis/tmdbAPI";
-import { getImdbPersonUrl } from "../../apis/imdb.API";
+import {
+  getActorDetail,
+  getImage,
+  getActorMovies,
+} from "../../../apis/tmdbAPI";
+import { getImdbPersonUrl } from "../../../apis/imdb.API";
 
 import "./ActorPage.css";
 import "../pages.css";
-import MovieCard from "../../components/MovieCard/MovieCard";
-import LinkTag from "../../components/LinkTag/LinkTag";
+import MovieCard from "../../MovieCard/MovieCard";
+import LinkTag from "../../LinkTag/LinkTag";
 import { FaImdb } from "react-icons/fa";
 import { HiArrowSmLeft } from "react-icons/hi";
 

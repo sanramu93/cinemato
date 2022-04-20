@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import "../pages.css";
 import "./Home.css";
-import Hero from "../../components/Hero/Hero";
-import MovieCard from "../../components/MovieCard/MovieCard";
-import NotFound from "../../components/NotFound/NotFound";
-import NavBtn from "../../components/NavBtn/NavBtn";
+import Hero from "../../Hero/Hero";
+import MovieCard from "../../MovieCard/MovieCard";
+import NotFound from "../../NotFound/NotFound";
+import NavBtn from "../../NavBtn/NavBtn";
 
 export default function HomePage({
   movies,
@@ -13,9 +13,10 @@ export default function HomePage({
   page,
   handlePrevPage,
   handleNextPage,
+  reference,
 }) {
   return (
-    <div className="container">
+    <div ref={reference} className="container">
       {movies.length === 0 ? (
         <NotFound />
       ) : (
