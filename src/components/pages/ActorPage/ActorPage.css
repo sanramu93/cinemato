@@ -1,6 +1,8 @@
 .actor__img {
   border-radius: var(--br-big);
+  max-height: 50vh;
   box-shadow: var(--bs-regular);
+  margin: 0 auto;
   margin-bottom: 3em;
 }
 

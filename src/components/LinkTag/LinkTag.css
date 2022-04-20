@@ -21,3 +21,10 @@
 .link-tag__text {
   color: var(--clr-body-tertiary);
 }
+
+@media (hover: hover), (-ms-high-contrast: none) {
+  .link-tag:hover {
+    background-color: var(--clr-orange-trans-01);
+    border: solid 1px var(--clr-orange);
+  }
+}

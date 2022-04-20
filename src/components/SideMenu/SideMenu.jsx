@@ -45,7 +45,7 @@ export default function SideMenu({
       </div>
       <div className="side-menu__filters">
         <h3 className="side-menu__title">Genres</h3>
-        <ul>
+        <ul className="side-menu__genres">
           {allGenres.map((genre) => (
             <li key={genre.id} className="side-menu__link">
               <FilterLink

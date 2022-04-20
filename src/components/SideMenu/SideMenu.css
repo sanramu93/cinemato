@@ -44,15 +44,18 @@
   padding: 0.6em;
 }
 
-.side-menu__title,
-.side-menu__link {
-  padding-left: 2.4rem;
+.side-menu__filters {
+  padding: 0 1em;
+}
+
+.side-menu__categories {
+  border-bottom: solid 1px var(--clr-orange);
 }
 
 .side-menu__title {
   color: var(--clr-menu-secondary);
   font-size: 1.8rem;
-  padding: 1em;
+  padding: 1em 0;
 }
 
 .side-menu__link {

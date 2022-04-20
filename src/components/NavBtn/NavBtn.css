@@ -9,8 +9,14 @@
   border: solid 1px var(--clr-body-tertiary);
   border-radius: 50%;
   font-family: var(--ff-open-sans);
+  cursor: pointer;
 }
 
 .nav-btn:disabled {
   opacity: 0.5;
+}
+
+.nav-btn:hover {
+  background-color: var(--clr-orange-trans-01);
+  border: solid 1px var(--clr-orange);
 }

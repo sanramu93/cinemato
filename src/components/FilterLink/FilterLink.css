@@ -1,6 +1,9 @@
 .filter-link {
   display: flex;
   align-items: center;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  transition: background-color 0.2s ease-out;
 }
 
 .link__text {
@@ -12,4 +15,11 @@
   color: var(--clr-blue-main);
   font-size: 2.6rem;
   margin-right: 0.8em;
+}
+
+@media (hover: hover), (-ms-high-contrast: none) {
+  .filter-link:hover {
+    background-color: var(--clr-orange-trans-01);
+    outline: solid 1px var(--clr-orange);
+  }
 }

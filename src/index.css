@@ -45,7 +45,7 @@ ul {
   --fs-small: 1.3rem;
 
   /* Colors */
-  --clr-blue-main-tint-01: hsl(197, 38%, 90%);
+  --clr-blue-main-tint-01: hsl(197, 38%, 85%);
   --clr-blue-main: hsl(197, 38%, 57%);
 
   --clr-blue-dark-tint-01: hsl(203, 31%, 35%);
@@ -54,7 +54,9 @@ ul {
 
   --clr-blue-light: hsl(190, 100%, 90%);
 
-  --clr-orange-accent: hsl(34, 84%, 54%);
+  --clr-orange-trans: rgbrgba(247, 210, 161, 0);
+  --clr-orange-trans-01: rgba(247, 210, 161, 0.4);
+  --clr-orange: hsl(34, 84%, 54%);
 
   --clr-white: hsl(210, 17%, 98%);
 
