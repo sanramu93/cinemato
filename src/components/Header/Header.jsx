@@ -13,7 +13,9 @@ export default function Header({
   showMenu,
   showMenuToggle,
   showMenuOverlay,
+  handleSearchChange,
   handleSearchSubmit,
+  inputTerm,
   inputRef,
   handleOverlayClick,
 }) {
@@ -32,7 +34,7 @@ export default function Header({
         )}
 
         <div className="header__search">
-          <button className="header__btn-menu">
+          <button className="header__btn-menu" onClick={handleSearchSubmit}>
             <HiOutlineSearch className="header__icon header__search__icon" />
           </button>
           <form
@@ -41,7 +43,12 @@ export default function Header({
               navigate("/");
             }}
           >
-            <input ref={inputRef} type="text" />
+            <input
+              value={inputTerm}
+              onChange={handleSearchChange}
+              ref={inputRef}
+              type="text"
+            />
           </form>
         </div>
         <button className="header__btn-menu" onClick={toggleDarkMode}>

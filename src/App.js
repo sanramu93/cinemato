@@ -18,6 +18,7 @@ export default function App() {
   const [allGenres, setAllGenres] = useState([]);
   const [category, setCategory] = useState("popular");
   const [genreId, setGenreId] = useState(0);
+  const [inputTerm, setInputTerm] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [showMenu, setShowMenu] = useState(false);
   const [showMenuToggle, setShowMenuToggle] = useState(true);
@@ -34,6 +35,7 @@ export default function App() {
   const resetFilters = () => {
     setCategory("");
     setGenreId(0);
+    setInputTerm("");
     setSearchTerm("");
     setPage(1);
     inputRef.current.value = "";
@@ -55,13 +57,18 @@ export default function App() {
       : document.body.classList.remove("scroll-disabled");
   };
 
-  const handleSearchSubmit = async (e) => {
+  const handleSearchChange = (e) => {
+    setInputTerm(e.target.value);
+  };
+
+  const handleSearchSubmit = (e) => {
     e.preventDefault();
-    const term = e.target[0].value;
-    if (!term) return;
     resetFilters();
-    setSearchTerm(term);
-    inputRef.current.value = term;
+    setSearchTerm(inputTerm);
+  };
+
+  const handleSearchClick = () => {
+    console.log("Click");
   };
 
   const changeCategory = (categoryName) => {
@@ -146,7 +153,10 @@ export default function App() {
           showMenu={showMenu}
           showMenuToggle={showMenuToggle}
           showMenuOverlay={showMenuOverlay}
+          handleSearchChange={handleSearchChange}
           handleSearchSubmit={handleSearchSubmit}
+          handleSearchClick={handleSearchClick}
+          inputTerm={inputTerm}
           searchTerm={searchTerm}
           inputRef={inputRef}
           handleOverlayClick={handleOverlayClick}

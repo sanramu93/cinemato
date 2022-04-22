@@ -46,13 +46,13 @@ ul {
 
   /* Colors */
   --clr-blue-main-tint-01: hsl(197, 38%, 85%);
-  --clr-blue-main: hsl(197, 38%, 57%);
+  --clr-blue-main: #68a3bb;
 
   --clr-blue-dark-tint-01: hsl(203, 31%, 35%);
   --clr-blue-dark: hsl(203, 31%, 21%);
   --clr-blue-dark-shade-02: hsl(203, 31%, 15%);
 
-  --clr-blue-light: hsl(190, 100%, 90%);
+  --clr-blue-light: #ccf6ff;
 
   --clr-orange-trans: rgbrgba(247, 210, 161, 0);
   --clr-orange-trans-01: rgba(247, 210, 161, 0.1);

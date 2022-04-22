@@ -1,4 +1,5 @@
 import "./SideMenu.css";
+import { FaPlayCircle } from "react-icons/fa";
 import FilterLink from "../FilterLink/FilterLink";
 
 export default function SideMenu({
@@ -15,7 +16,10 @@ export default function SideMenu({
       }`}
     >
       <div className="side-menu__top">
-        <div className="side-menu__logo">Cinemato</div>
+        <div className="side-menu__logo">
+          Cinemato
+          <FaPlayCircle className="side-menu__logo__icon" />
+        </div>
       </div>
       <div className="side-menu__filters">
         <h3 className="side-menu__title">Categories</h3>
