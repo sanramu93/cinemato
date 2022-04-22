@@ -6,10 +6,16 @@
   margin: 4.8rem 0;
 }
 
-.movie-card__img {
-  width: 24rem;
+.movie-card__img__container {
+  position: relative;
   border-radius: var(--br-big);
   box-shadow: var(--bs-small);
+  width: 24rem;
+  height: 36rem;
+}
+
+.movie-card__img {
+  border-radius: inherit;
 }
 
 .movie-card__title {

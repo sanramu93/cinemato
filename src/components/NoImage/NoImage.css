@@ -1,0 +1,27 @@
+.no-image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: inherit;
+  background-color: var(--clr-body-tertiary);
+  /* border: solid 1px red; */
+}
+
+.no-image__icon {
+  font-size: 9.6rem;
+  color: var(--clr-body-primary);
+}
+.no-image__text {
+  text-align: center;
+  letter-spacing: 1px;
+  font-weight: var(--fw-medium);
+  font-size: 3.6rem;
+  color: var(--clr-body-primary);
+}

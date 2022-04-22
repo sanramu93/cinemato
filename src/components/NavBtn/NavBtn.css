@@ -13,7 +13,9 @@
 }
 
 .nav-btn:disabled {
-  opacity: 0.5;
+  opacity: 0.2;
+  pointer-events: none;
+  cursor: auto;
 }
 
 .nav-btn:hover {

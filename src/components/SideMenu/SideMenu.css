@@ -58,11 +58,11 @@
 }
 
 .side-menu__filters {
-  padding: 0 1em;
+  padding: 0 1.3em;
 }
 
 .side-menu__categories {
-  border-bottom: solid 1px var(--clr-orange);
+  border-bottom: solid 1px var(--clr-body-tertiary);
 }
 
 .side-menu__title {

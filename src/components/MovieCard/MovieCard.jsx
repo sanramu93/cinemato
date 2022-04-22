@@ -3,14 +3,15 @@ import { BsFillStarFill, BsStar, BsStarHalf } from "react-icons/bs";
 
 import "./MovieCard.css";
 import { getRatingStars } from "../../utils/utils";
-import noImage from "../../assets/img/no-img.jpg";
+import NoImage from "../NoImage/NoImage";
 
 export default function MovieCard({ movie }) {
   const [ratingStars, setRatingStars] = useState([]);
 
+  const { title, posterUrl, backdropUrl, vote_average } = movie;
+
   // Getting number of Rating stars
   useEffect(() => {
-    const { vote_average } = movie;
     if (!vote_average) return;
     const stars = getRatingStars(vote_average);
     setRatingStars(stars);
@@ -28,17 +29,21 @@ export default function MovieCard({ movie }) {
 
   return (
     <div className="movie-card">
-      <img
-        src={movie.posterUrl || movie.backdropUrl || noImage}
-        alt=""
-        className="movie-card__img"
-      />
-      <h3 className="movie-card__title">{movie.title}</h3>
+      <div className="movie-card__img__container">
+        {posterUrl && backdropUrl ? (
+          <img
+            src={posterUrl || backdropUrl}
+            alt={`${title} poster`}
+            className="movie-card__img"
+          />
+        ) : (
+          <NoImage />
+        )}
+      </div>
+      <h3 className="movie-card__title">{title}</h3>
       <div className="movie-card__rating">
         <div className="rating__stars">{renderRatingStars()}</div>
-        <p className="rating-number">{`${movie.vote_average?.toFixed(
-          1
-        )}/10`}</p>
+        <p className="rating-number">{`${vote_average?.toFixed(1)}/10`}</p>
       </div>
     </div>
   );

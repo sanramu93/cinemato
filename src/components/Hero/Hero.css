@@ -1,4 +1,5 @@
 .hero {
+  position: relative;
   height: 75vh;
   margin: 0 auto;
   display: flex;
@@ -16,8 +17,13 @@
 
 .hero__title {
   color: var(--clr-white);
+  z-index: 1;
 }
 
 .hero__description {
   color: var(--clr-white);
+  z-index: 1;
+}
+
+.hero__no-image {
 }
