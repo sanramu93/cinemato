@@ -30,9 +30,9 @@ export default function MovieCard({ movie }) {
   return (
     <div className="movie-card">
       <div className="movie-card__img__container">
-        {posterUrl && backdropUrl ? (
+        {posterUrl ? (
           <img
-            src={posterUrl || backdropUrl}
+            src={posterUrl}
             alt={`${title} poster`}
             className="movie-card__img"
           />

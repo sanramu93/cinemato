@@ -126,8 +126,6 @@ h1 {
 h2 {
   font-size: var(--fs-h2);
   margin: 0.5em 0;
-  padding-bottom: 0.3em;
-  border-bottom: 1px solid var(--clr-orange);
 }
 h3 {
   font-size: var(--fs-h3);

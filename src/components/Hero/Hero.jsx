@@ -1,11 +1,13 @@
 import "./Hero.css";
+import noImage from "../../assets/img/no-img.jpg";
 import NoImage from "../NoImage/NoImage";
 
-export default function Hero({ movie }) {
-  const { title, poster_url, backdropUrl, overview } = movie;
+export default function Hero({ movie, showOverview }) {
+  const { title, posterUrl, backdropUrl, overview } = movie;
+  // console.log(overview);
   const styles = {
     backgroundImage: `linear-gradient(rgba(0, 0, 0,0.5), rgba(0, 0, 0,0.5)) , url(${
-      poster_url || backdropUrl
+      backdropUrl || posterUrl
     })`,
   };
 
@@ -15,10 +17,11 @@ export default function Hero({ movie }) {
   return (
     <section className="hero" style={styles}>
       <h2 className="hero__title">{title}</h2>
-      <p className="hero__description">{sliceText(overview, 400)}</p>
-      {!poster_url && !backdropUrl ? (
-        <NoImage className="hero__no-image" />
-      ) : null}
+      {showOverview && (
+        <p className="hero__description">{sliceText(overview, 400)}</p>
+      )}
+
+      {!posterUrl && !backdropUrl && <NoImage className="hero__no-image" />}
     </section>
   );
 }
