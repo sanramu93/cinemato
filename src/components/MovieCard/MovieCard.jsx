@@ -4,8 +4,9 @@ import { BsFillStarFill, BsStar, BsStarHalf } from "react-icons/bs";
 import "./MovieCard.css";
 import { getRatingStars } from "../../utils/utils";
 import NoImage from "../NoImage/NoImage";
+import Spinner from "../../components/Spinner/Spinner";
 
-export default function MovieCard({ movie }) {
+export default function MovieCard({ movie, isLoading }) {
   const [ratingStars, setRatingStars] = useState([]);
 
   const { title, posterUrl, backdropUrl, vote_average } = movie;
@@ -29,22 +30,28 @@ export default function MovieCard({ movie }) {
 
   return (
     <div className="movie-card">
-      <div className="movie-card__img__container">
-        {posterUrl ? (
-          <img
-            src={posterUrl}
-            alt={`${title} poster`}
-            className="movie-card__img"
-          />
-        ) : (
-          <NoImage />
-        )}
-      </div>
-      <h3 className="movie-card__title">{title}</h3>
-      <div className="movie-card__rating">
-        <div className="rating__stars">{renderRatingStars()}</div>
-        <p className="rating-number">{`${vote_average?.toFixed(1)}/10`}</p>
-      </div>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <>
+          <div className="movie-card__img__container">
+            {posterUrl ? (
+              <img
+                src={posterUrl}
+                alt={`${title} poster`}
+                className="movie-card__img"
+              />
+            ) : (
+              <NoImage />
+            )}
+          </div>
+          <h3 className="movie-card__title">{title}</h3>
+          <div className="movie-card__rating">
+            <div className="rating__stars">{renderRatingStars()}</div>
+            <p className="rating-number">{`${vote_average?.toFixed(1)}/10`}</p>
+          </div>
+        </>
+      )}
     </div>
   );
 }

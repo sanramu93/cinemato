@@ -11,6 +11,7 @@ import MoviePage from "./components/pages/MoviePage/MoviePage";
 import ActorPage from "./components/pages/ActorPage/ActorPage";
 
 export default function App() {
+  const [isLoading, setIsLoading] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
   const [movies, setMovies] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
@@ -39,6 +40,13 @@ export default function App() {
     setSearchTerm("");
     setPage(1);
     inputRef.current.value = "";
+    scrollToTop();
+  };
+
+  const onLogoClick = () => {
+    resetFilters();
+    setCategory("popular");
+    setShowMenu(false);
     scrollToTop();
   };
 
@@ -101,14 +109,17 @@ export default function App() {
 
   useEffect(() => {
     const getData = async () => {
+      setIsLoading(true);
       const data = await getMovieGenres();
       setAllGenres(data.genres);
     };
     getData();
+    setIsLoading(false);
   }, []);
 
   useEffect(() => {
     const getData = async () => {
+      setIsLoading(true);
       const data = await getMovies(category, genreId, searchTerm, page);
       setTotalPages(data.total_pages);
       setMovies(
@@ -120,6 +131,7 @@ export default function App() {
           };
         })
       );
+      setIsLoading(false);
     };
     getData();
     scrollToTop();
@@ -155,9 +167,7 @@ export default function App() {
           showMenuOverlay={showMenuOverlay}
           handleSearchChange={handleSearchChange}
           handleSearchSubmit={handleSearchSubmit}
-          handleSearchClick={handleSearchClick}
           inputTerm={inputTerm}
-          searchTerm={searchTerm}
           inputRef={inputRef}
           handleOverlayClick={handleOverlayClick}
         />
@@ -167,25 +177,20 @@ export default function App() {
           allGenres={allGenres}
           changeGenre={changeGenre}
           showMenu={showMenu}
+          onLogoClick={onLogoClick}
         />
         <Routes>
           <Route
             path="/"
             element={
               <HomePage
-                darkMode={darkMode}
-                changeCategory={changeCategory}
-                allGenres={allGenres}
-                changeGenre={changeGenre}
-                showMenu={showMenu}
-                toggleShowMenu={toggleShowMenu}
-                handleSearchSubmit={handleSearchSubmit}
-                searchTerm={searchTerm}
                 movies={movies}
                 totalPages={totalPages}
                 page={page}
                 handlePrevPage={handlePrevPage}
                 handleNextPage={handleNextPage}
+                setIsLoading={setIsLoading}
+                isLoading={isLoading}
               />
             }
           />
@@ -193,26 +198,16 @@ export default function App() {
             path="/movie/:movieId"
             element={
               <MoviePage
-                changeCategory={changeCategory}
-                allGenres={allGenres}
                 changeGenre={changeGenre}
-                showMenu={showMenu}
-                toggleShowMenu={toggleShowMenu}
-                handleSearchSubmit={handleSearchSubmit}
+                setIsLoading={setIsLoading}
+                isLoading={isLoading}
               />
             }
           />
           <Route
             path="/actors/:actorId"
             element={
-              <ActorPage
-                changeCategory={changeCategory}
-                allGenres={allGenres}
-                changeGenre={changeGenre}
-                showMenu={showMenu}
-                toggleShowMenu={toggleShowMenu}
-                handleSearchSubmit={handleSearchSubmit}
-              />
+              <ActorPage setIsLoading={setIsLoading} isLoading={isLoading} />
             }
           />
         </Routes>

@@ -1,0 +1,35 @@
+.loader-wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader {
+  border: 5px solid var(--clr-body-tertiary);
+  border-top: 5px solid var(--clr-body-primary);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  animation: spin 1s linear infinite;
+}
+
+.loader__text {
+  font-size: var(--fs-big);
+  letter-spacing: 1px;
+  text-align: center;
+  color: var(--clr-body-tertiary);
+  padding: 0.5em;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

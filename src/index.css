@@ -148,6 +148,7 @@ input {
   ----------------- */
 .container {
   padding: 8.6rem 2rem 2.4rem 2rem;
+  min-height: 100vh;
   position: relative;
   scroll-behavior: smooth;
 }

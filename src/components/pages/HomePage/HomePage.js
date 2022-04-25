@@ -13,21 +13,32 @@ export default function HomePage({
   page,
   handlePrevPage,
   handleNextPage,
-  reference,
+  setIsLoading,
+  isLoading = { isLoading },
 }) {
   return (
-    <div ref={reference} className="container">
+    <div className="container">
       {movies.length === 0 ? (
         <NotFound />
       ) : (
         <section className="home">
           <Link to={`/movie/${movies[0]?.id}`}>
-            {<Hero movie={movies[0] || ""} showOverview={true} />}
+            {
+              <Hero
+                movie={movies[0] || ""}
+                showOverview={true}
+                isLoading={isLoading}
+              />
+            }
           </Link>
           <section className="movie-cards">
             {movies.slice(1).map((movie) => (
               <Link key={movie.id} to={`/movie/${movie.id}`}>
-                <MovieCard movie={movie} />
+                <MovieCard
+                  movie={movie}
+                  setIsLoading={setIsLoading}
+                  isLoading={isLoading}
+                />
               </Link>
             ))}
           </section>

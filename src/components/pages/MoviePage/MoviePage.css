@@ -33,6 +33,15 @@
   gap: 1em;
 }
 
+.profile__img {
+  /* border: solid 1px var(--clr-body-tertiary); */
+}
+
+.profile__name,
+.profile__character {
+  text-align: center;
+}
+
 @media (min-width: 500px) {
   .top-cast__profiles {
     grid-template-columns: repeat(3, 1fr);

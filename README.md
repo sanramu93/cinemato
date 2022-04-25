@@ -23,6 +23,7 @@ Cinemato is a database search app with information related to films. Find all ab
 
 In the project directory, you can run:
 
+- Clone this project in your local machine
 - npm install: Install dependencies
 - npm start: Runs the app in the development mode
 

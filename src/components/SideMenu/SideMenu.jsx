@@ -5,10 +5,11 @@ import FilterLink from "../FilterLink/FilterLink";
 
 export default function SideMenu({
   darkMode,
-  allGenres,
   changeCategory,
+  allGenres,
   changeGenre,
   showMenu,
+  onLogoClick,
 }) {
   return (
     <div
@@ -17,7 +18,7 @@ export default function SideMenu({
       }`}
     >
       <div className="side-menu__top">
-        <Link to="/">
+        <Link to="/" onClick={onLogoClick}>
           <div className="side-menu__logo">
             Cinemato
             <FaPlayCircle className="side-menu__logo__icon" />
