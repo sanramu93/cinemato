@@ -65,14 +65,15 @@ export default function MoviePage({ changeGenre, setIsLoading, isLoading }) {
     imdb_id,
   } = movie;
 
-  // setIsLoading(true);
   return (
     <div className="container">
       {isLoading ? (
         <Spinner />
       ) : (
         <section className="page movie-detail">
-          <MovieCard movie={movie} isLoading={isLoading} />
+          <div className="movie-card__container">
+            <MovieCard movie={movie} isLoading={isLoading} />
+          </div>
           <p className="movie-detail__tagline">{tagline}</p>
           <p className="movie-detail__runtime">{`${runtime} min / ${release_date} / ${original_language}`}</p>
           <ul className="movie-detail__genres">

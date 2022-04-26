@@ -18,6 +18,7 @@
 
 .hero__title {
   color: var(--clr-white);
+  width: fit-content;
   z-index: 1;
   padding-bottom: 0.2em;
   border-bottom: 3px solid var(--clr-orange);
@@ -26,4 +27,16 @@
 .hero__description {
   color: var(--clr-white);
   z-index: 1;
+}
+
+@media (min-width: 1000px) {
+  .hero {
+    padding: 4.8em;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero {
+    padding: 9.6em;
+  }
 }

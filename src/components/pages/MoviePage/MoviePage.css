@@ -1,3 +1,7 @@
+.movie-card__container {
+  display: flex;
+  justify-content: center;
+}
 .movie-detail__tagline {
   font-size: var(--fs-h3);
   font-weight: var(--fw-medium);
@@ -31,10 +35,12 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1em;
+  justify-content: center;
 }
 
 .profile__img {
-  /* border: solid 1px var(--clr-body-tertiary); */
+  max-height: 30rem;
+  max-width: 14rem;
 }
 
 .profile__name,
@@ -44,20 +50,14 @@
 
 @media (min-width: 500px) {
   .top-cast__profiles {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
   }
 }
 
 @media (min-width: 1000px) {
-  .top-cast__profiles {
-    grid-template-columns: repeat(4, 1fr);
-  }
 }
 
 @media (min-width: 1200px) {
-  .top-cast__profiles {
-    grid-template-columns: repeat(6, 1fr);
-  }
 }
 
 .top-cast__profile {

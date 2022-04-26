@@ -45,8 +45,10 @@ export default function App() {
 
   const onLogoClick = () => {
     resetFilters();
+    if (window.innerWidth < 800) {
+      setShowMenu(false);
+    }
     setCategory("popular");
-    setShowMenu(false);
     scrollToTop();
   };
 

@@ -1,3 +1,9 @@
+.movie-cards {
+  display: grid;
+  gap: 1em;
+  justify-content: center;
+}
+
 .pagination {
   display: flex;
   justify-content: space-around;
@@ -9,4 +15,10 @@
   font-size: var(--fs-h3);
   font-weight: var(--fw-bold);
   padding: 0.5em 1em;
+}
+
+@media (min-width: 800px) {
+  .movie-cards {
+    gap: 2em;
+  }
 }
