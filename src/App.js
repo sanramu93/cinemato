@@ -73,12 +73,13 @@ export default function App() {
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
+    if (inputTerm === "") return;
     resetFilters();
     setSearchTerm(inputTerm);
   };
 
-  const handleSearchClick = () => {
-    console.log("Click");
+  const handleSearchClick = (e) => {
+    handleSearchSubmit(e);
   };
 
   const changeCategory = (categoryName) => {
@@ -169,6 +170,7 @@ export default function App() {
           showMenuOverlay={showMenuOverlay}
           handleSearchChange={handleSearchChange}
           handleSearchSubmit={handleSearchSubmit}
+          handleSearchClick={handleSearchClick}
           inputTerm={inputTerm}
           inputRef={inputRef}
           handleOverlayClick={handleOverlayClick}

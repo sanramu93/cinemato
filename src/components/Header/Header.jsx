@@ -15,6 +15,7 @@ export default function Header({
   showMenuOverlay,
   handleSearchChange,
   handleSearchSubmit,
+  handleSearchClick,
   inputTerm,
   inputRef,
   handleOverlayClick,
@@ -34,7 +35,13 @@ export default function Header({
         )}
 
         <div className="header__search">
-          <button className="header__btn-menu" onClick={handleSearchSubmit}>
+          <button
+            className="header__btn-menu"
+            onClick={(e) => {
+              handleSearchSubmit(e);
+              navigate("/");
+            }}
+          >
             <HiOutlineSearch className="header__icon header__search__icon" />
           </button>
           <form
